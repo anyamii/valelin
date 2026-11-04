@@ -312,17 +312,17 @@ a.row:active, button.row:active { background: var(--sunk); }
   background: currentColor;
   -webkit-mask: center / contain no-repeat; mask: center / contain no-repeat;
 }
-.ph-file-text        { -webkit-mask-image: none;        mask-image: none; }
-.ph-magnifying-glass { -webkit-mask-image: none; mask-image: none; }
-.ph-pencil-simple    { -webkit-mask-image: none;    mask-image: none; }
-.ph-terminal         { -webkit-mask-image: none;         mask-image: none; }
-.ph-clipboard-text   { -webkit-mask-image: none;   mask-image: none; }
-.ph-play             { -webkit-mask-image: none;             mask-image: none; }
-.ph-plus             { -webkit-mask-image: none;             mask-image: none; }
-.ph-file             { -webkit-mask-image: none;             mask-image: none; }
-.ph-file-doc         { -webkit-mask-image: none;         mask-image: none; }
-.ph-file-pdf         { -webkit-mask-image: none;         mask-image: none; }
-.ph-file-image       { -webkit-mask-image: none;       mask-image: none; }
+.ph-file-text        { -webkit-mask-image: url("file-text-light.svg");        mask-image: url("file-text-light.svg"); }
+.ph-magnifying-glass { -webkit-mask-image: url("magnifying-glass-light.svg"); mask-image: url("magnifying-glass-light.svg"); }
+.ph-pencil-simple    { -webkit-mask-image: url("pencil-simple-light.svg");    mask-image: url("pencil-simple-light.svg"); }
+.ph-terminal         { -webkit-mask-image: url("terminal-light.svg");         mask-image: url("terminal-light.svg"); }
+.ph-clipboard-text   { -webkit-mask-image: url("clipboard-text-light.svg");   mask-image: url("clipboard-text-light.svg"); }
+.ph-play             { -webkit-mask-image: url("play-light.svg");             mask-image: url("play-light.svg"); }
+.ph-plus             { -webkit-mask-image: url("plus-light.svg");             mask-image: url("plus-light.svg"); }
+.ph-file             { -webkit-mask-image: url("file-light.svg");             mask-image: url("file-light.svg"); }
+.ph-file-doc         { -webkit-mask-image: url("file-doc-light.svg");         mask-image: url("file-doc-light.svg"); }
+.ph-file-pdf         { -webkit-mask-image: url("file-pdf-light.svg");         mask-image: url("file-pdf-light.svg"); }
+.ph-file-image       { -webkit-mask-image: url("file-image-light.svg");       mask-image: url("file-image-light.svg"); }
 
 /* ==========================================================================
    聊天
