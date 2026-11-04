@@ -46,6 +46,6 @@ py -3.12 -m venv .venv
 
 产品目标、演示取舍与验收由 Anya 主导；演示适配、脱敏、回放与相关修复由AI（Codex）实现和验证；原前后端与视觉组件按来源保留署名。
 
-相关离线检索实验：[memlib](https://github.com/OWNER/memlib)（待建仓后替换 OWNER）。memlib 研究何时给出记忆与何时返回空包；两个项目目前独立，互链不代表已完成集成。
+相关离线检索实验：[memlib](https://github.com/anyamii/memlib)。memlib 研究何时给出记忆与何时返回空包；两个项目目前独立，互链不代表已完成集成。
 
 公开版已中性化旧界面注释，排除来源未核准的素材；字体版本、子集比对与图标匹配范围见 [ASSET_PROVENANCE.md](ASSET_PROVENANCE.md)。
