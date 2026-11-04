@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env*
+data/
+uploads/
+logs/
+private/
+*.db
+*.sqlite*
+*.log
+*.pem
+*.key
+*.bak
+*.zip
+*.tar*
