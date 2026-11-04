@@ -1,0 +1,118 @@
+
+
+
+/* System font fallback: bundled fonts pending provenance. */
+/* System font fallback: bundled fonts pending provenance. */
+/* System font fallback: bundled fonts pending provenance. */
+
+
+/* System font fallback: bundled fonts pending provenance. */
+/* System font fallback: bundled fonts pending provenance. */
+
+:root {
+  
+  
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, Roboto, "Noto Sans CJK SC", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  
+  --font-serif: "Cormorant Garamond", system-ui, -apple-system, Roboto, "Noto Sans CJK SC", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  
+  --font-label: "Montserrat", system-ui, -apple-system, Roboto, "Noto Sans CJK SC", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, "Roboto Mono", "Droid Sans Mono", "Noto Sans Mono", Consolas, "Liberation Mono", monospace;
+
+  
+  
+  --t1-font: var(--font-serif); --t1-size: 128px; --t1-line: 0.82; --t1-weight: 300; --t1-track: -0.04em;
+  
+  --t2-font: var(--font-serif); --t2-size: 40px;  --t2-line: 1.05; --t2-weight: 300; --t2-track: -0.01em;
+  
+  --t3-font: var(--font-serif); --t3-size: 24px;  --t3-line: 1.3;  --t3-weight: 400; --t3-track: 0;
+  
+  --t4-font: var(--font-sans);  --t4-size: 16px;  --t4-line: 1.45; --t4-weight: 500; --t4-track: 0;
+  
+  --t5-font: var(--font-sans);  --t5-size: 16px;  --t5-line: 1.7;  --t5-weight: 400; --t5-track: 0;
+  
+  --t6-font: var(--font-sans);  --t6-size: 13px;  --t6-line: 1.55; --t6-weight: 400; --t6-track: 0;
+  
+  --t7-font: var(--font-label); --t7-size: 11px;  --t7-line: 1.4;  --t7-weight: 500; --t7-track: 0.14em;
+  
+  --t8-font: var(--font-mono);  --t8-size: 13px;  --t8-line: 1.6;  --t8-weight: 400; --t8-track: 0;
+
+  
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+  --s5: 24px; --s6: 32px; --s7: 48px; --s8: 80px;
+  
+  --gutter: var(--s5);        
+  --gap-col: var(--s3);       
+  --gap-row: var(--s4);       
+  --gap-stack: var(--s2);     
+  --gap-block: var(--s7);     
+  --gap-chapter: var(--s8);   
+
+  
+  --grid-cols: 6;
+  --grid-max: 560px;          
+  --col-label: 2;             
+
+  
+  --hair-w: 1px;              
+  --rule-w: 1px;              
+
+  
+  --radius: 2px;              
+  --tap: 44px;                
+  --icon: 18px;               
+
+  
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur: 220ms;
+
+  color-scheme: light;
+}
+
+
+:root,
+:root[data-theme="day"] {
+  --paper:  #F6F7F4;   
+  --sheet:  #EDEAE4;   
+  --sunk:   #E4DED4;   
+  --ink:    #5E6462;   
+  --ink-2:  #7A7F7C;   
+  --ink-3:  #5E6462;   
+  --hair:   #E4DED4;   
+  --rule:   #5E6462;   
+  --accent: #7A857C;   
+  --on-accent: #F6F7F4;
+  --warn:   #9C5545;   
+  --scrim:  rgba(94, 100, 98, .16); 
+  --photo-1: #B7ADA2; --photo-2: #A3ABA5; --photo-3: #CFC8BD; 
+  color-scheme: light;
+}
+
+
+:root[data-theme="night"] {
+  --paper:  #1F2321;
+  --sheet:  #2A2F2D;
+  --sunk:   #313634;
+  --ink:    #E4DED4;
+  --ink-2:  #A7ACA8;
+  --ink-3:  #E4DED4;
+  --hair:   #3A403D;
+  --rule:   #A7ACA8;
+  --accent: #9AA59C;
+  --on-accent: #1F2321;
+  --warn:   #D9927F;
+  --scrim:  rgba(12, 14, 13, .45);
+  --photo-1: #4A4640; --photo-2: #3E4542; --photo-3: #55504A;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --paper:  #1F2321; --sheet: #2A2F2D; --sunk: #313634;
+    --ink:    #E4DED4; --ink-2: #A7ACA8; --ink-3: #E4DED4;
+    --hair:   #3A403D; --rule:  #A7ACA8;
+    --accent: #9AA59C; --on-accent: #1F2321; --warn: #D9927F;
+    --scrim:  rgba(12, 14, 13, .45);
+    --photo-1: #4A4640; --photo-2: #3E4542; --photo-3: #55504A;
+    color-scheme: dark;
+  }
+}

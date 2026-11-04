@@ -1,0 +1,37 @@
+/* NOTES reuses STUDY geometry/tokens and the chat code/table card family. */
+#typeTabs{flex:1;}
+.notes-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;}
+.notes-tools p{flex:1;}
+.note-link{display:block;text-decoration:none;color:var(--text);}
+.note-link h2{font-family:var(--font-cn);font-size:17px;}
+.note-link .hint{margin-top:8px;}
+.notes-reader main{padding-bottom:calc(24px + env(safe-area-inset-bottom));}
+.note-heading{margin:8px 0 22px;}
+.note-heading h2{font-size:23px;overflow-wrap:anywhere;}
+.note-heading .hint{margin-top:8px;}
+.note-markdown{font-family:var(--font-cn);color:var(--text);line-height:1.8;overflow-wrap:anywhere;min-width:0;}
+.note-markdown :is(h1,h2,h3,h4,h5,h6){font-family:var(--font-cn);font-weight:600;line-height:1.5;margin:24px 0 12px;}
+.note-markdown h1{font-size:23px;}
+.note-markdown h2{font-size:20px;}
+.note-markdown :is(h3,h4,h5,h6){font-size:17px;}
+.note-markdown :is(p,ul,ol,blockquote){margin:12px 0;}
+.note-markdown :is(ul,ol){padding-left:24px;}
+.note-markdown li+li{margin-top:6px;}
+.note-markdown blockquote{margin-left:0;padding-left:12px;border-left:2px solid var(--hairline);}
+.note-markdown :is(code,pre,.code-card-head){font-family:ui-monospace,"SF Mono","SFMono-Regular",Menlo,Consolas,"Cascadia Mono",monospace;}
+.note-markdown :not(pre)>code{font-size:.9em;background:var(--row-press);border-radius:3px;padding:0 3px;}
+.note-markdown :is(.code-card,.table-card){min-width:0;max-width:100%;overflow:hidden;background:var(--bg);color:var(--text);border:0;border-radius:18px;corner-shape:squircle;box-shadow:var(--card-shadow);margin:12px 0;}
+.note-markdown .code-card-head{display:flex;align-items:center;min-height:44px;padding:0 10px;font-size:12px;}
+.note-markdown .code-card pre{margin:0;padding:0 10px 12px;overflow-x:auto;white-space:pre;tab-size:4;overscroll-behavior-x:contain;font-size:12px;line-height:1.65;}
+.note-markdown pre code{display:block;width:max-content;min-width:100%;}
+.note-markdown .table-card{overflow-x:auto;overscroll-behavior-x:contain;}
+.note-markdown table{border-collapse:collapse;width:max-content;min-width:100%;font:inherit;color:inherit;}
+.note-markdown :is(th,td){padding:8px 10px;text-align:left;white-space:nowrap;word-break:normal;overflow-wrap:normal;border-bottom:1px solid var(--hairline);}
+.note-markdown th{font-weight:600;}
+.note-markdown tr:last-child td{border-bottom:0;padding-bottom:12px;}
+.note-markdown .table-align-center{text-align:center;}
+.note-markdown .table-align-right{text-align:right;}
+.note-markdown .table-card:focus-visible{outline:2px solid var(--text);outline-offset:-2px;}
+:root[data-study-wall-ink="bg"] .notes-reader :is(.note-markdown,.note-heading,#noteStatus){color:var(--bg);}
+/* Code/table surfaces are opaque theme paper even over a photograph. */
+.notes-reader .note-markdown :is(.code-card,.table-card){color:var(--text);}

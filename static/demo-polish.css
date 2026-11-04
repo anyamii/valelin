@@ -1,0 +1,18 @@
+.valelin-wordmark{display:block!important;font-family:var(--font-en)!important;font-size:clamp(60px,17vw,96px)!important;font-style:italic;font-weight:400;letter-spacing:-.035em;line-height:1.12!important;padding:.06em 0 .16em;}
+#workWindow .home-today-body{max-height:65dvh;overflow-y:auto;padding-bottom:24px;}
+#workWindow details{padding:10px 0;}#workWindow details details{margin-left:12px;}#workWindow summary{cursor:pointer;min-height:30px;}#workWindow details p{white-space:pre-line;font-size:12px;line-height:1.7;}
+#input::placeholder{font-size:11px;}
+
+/* Inline approval retains the formal component styling. */
+.demo-permission{max-width:100%;padding:14px;border:1px solid var(--hairline);border-radius:16px;background:var(--card-bg);width:min(100%,340px);box-sizing:border-box;}
+.demo-permission .ask-opt{width:100%;min-height:44px;}
+.demo-permission .ask-q-detail{white-space:pre-wrap;overflow-wrap:anywhere;}
+#demoSceneSheet button:disabled{opacity:.45;cursor:wait;}
+
+/* A separate placeholder line centers consistently across browser engines. */
+#input::placeholder{color:transparent;}
+#demoComposerHint{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--font-en),var(--font-cn);font-size:11px;line-height:1.35;color:var(--text-faint);pointer-events:none;white-space:nowrap;overflow:hidden;}
+.row.ai::before{background-color:var(--hairline);}
+/* Programmatic sends clear the textarea without an input event. */
+#input:placeholder-shown ~ #demoComposerHint{display:block!important;}
+#input:not(:placeholder-shown) ~ #demoComposerHint{display:none!important;}

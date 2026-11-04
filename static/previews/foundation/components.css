@@ -1,0 +1,459 @@
+/* ==========================================================================
+   VALELIN 设计地基 · components.css
+   只许引用 tokens.css 里的变量，不许出现新的颜色、字号、间距数值。
+   顺序：基础 → 8 级字 → 栅格 → 线 → 卡片 → 组件 → 聊天 → 版式
+   ========================================================================== */
+
+/* ---------- 基础 ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: var(--t5-weight) var(--t5-size)/var(--t5-line) var(--t5-font);
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: lining-nums;
+}
+h1, h2, h3, h4, p, ul, ol, blockquote, figure { margin: 0; }
+ul, ol { padding: 0; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+em { font-style: normal; color: var(--accent); }   /* 强调：Pine Smoke 换色，不斜体（中文斜体难看） */
+img, svg { display: block; }
+:focus-visible { outline: var(--hair-w) solid var(--accent); outline-offset: 2px; }
+
+/* ---------- 8 级字 ---------- */
+.t-display { font: var(--t1-weight) var(--t1-size)/var(--t1-line) var(--t1-font); letter-spacing: var(--t1-track); color: var(--ink); }
+.t-h1      { font: var(--t2-weight) var(--t2-size)/var(--t2-line) var(--t2-font); letter-spacing: var(--t2-track); color: var(--ink); }
+.t-h2      { font: var(--t3-weight) var(--t3-size)/var(--t3-line) var(--t3-font); letter-spacing: var(--t3-track); color: var(--ink); }
+.t-h3      { font: var(--t4-weight) var(--t4-size)/var(--t4-line) var(--t4-font); letter-spacing: var(--t4-track); color: var(--ink); }
+.t-body    { font: var(--t5-weight) var(--t5-size)/var(--t5-line) var(--t5-font); letter-spacing: var(--t5-track); color: var(--ink); }
+.t-note    { font: var(--t6-weight) var(--t6-size)/var(--t6-line) var(--t6-font); letter-spacing: var(--t6-track); color: var(--ink-2); }
+.t-label   { font: var(--t7-weight) var(--t7-size)/var(--t7-line) var(--t7-font); letter-spacing: var(--t7-track); color: var(--ink-3); text-transform: uppercase; }
+.t-mono    { font: var(--t8-weight) var(--t8-size)/var(--t8-line) var(--t8-font); letter-spacing: var(--t8-track); color: var(--ink); }
+/* 修饰：只改样式或颜色，不算新字级 */
+.is-italic { font-style: italic; }           /* 只用于衬线级（1–3） */
+.is-ink    { color: var(--ink); }
+.is-ink2   { color: var(--ink-2); }
+.is-ink3   { color: var(--ink-3); }
+.is-accent { color: var(--accent); }           /* 只给 ≥24px 的衬线字或图形；Pine 对比度 3.6，不许当小字颜色 */
+.is-warn   { color: var(--warn); }
+.num       { font-variant-numeric: tabular-nums lining-nums; }
+.clamp-3   { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ---------- 栅格：6 列，页边 24，栏距 12 ---------- */
+.page {
+  max-width: var(--grid-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter) calc(var(--gap-block) + env(safe-area-inset-bottom));
+}
+.grid { display: grid; grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr)); column-gap: var(--gap-col); }
+.span-all     { grid-column: 1 / -1; }
+.span-label   { grid-column: 1 / span var(--col-label); }
+.span-content { grid-column: calc(var(--col-label) + 1) / -1; }
+.span-half-l  { grid-column: 1 / span 3; }
+.span-half-r  { grid-column: 4 / -1; }
+.span-4       { grid-column: 1 / span 4; }
+.span-4-r     { grid-column: 3 / -1; }
+.bleed        { margin-inline: calc(-1 * var(--gutter)); }   /* 出血到屏幕边 */
+.bleed-l      { margin-left: calc(-1 * var(--gutter)); }
+.bleed-r      { margin-right: calc(-1 * var(--gutter)); }
+
+/* ---------- 线：只有两种 ---------- */
+.hair  { border: 0; border-top: var(--hair-w) solid var(--hair); margin: 0; }
+.rule  { border: 0; border-top: var(--rule-w) solid var(--rule); margin: 0; }
+
+/* ---------- 卡片：只给“拿得起来的东西”（定稿 A） ----------
+   Linen 再浅半档的面，无边、无阴影、2px 角；在聊天里跟正文一样宽。
+   规则：卡片必须有面，过程行（工具行、推送行、过程区）永远没有面，两者不许长得像。 */
+.card {
+  background: var(--sheet);
+  border-radius: var(--radius);
+  padding: var(--s4);
+}
+.card > * + * { margin-top: var(--gap-stack); }
+.card-foot { display: flex; gap: var(--s2); justify-content: flex-end; align-items: center; padding-top: var(--s1); }
+
+/* ---------- 顶栏：只剩聊天页在用（对方名字一直在顶上）；别的页没有顶栏 ---------- */
+.topbar {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--s3);
+  min-height: var(--tap);
+  padding-top: calc(var(--s2) + env(safe-area-inset-top));
+}
+.topbar > :first-child { justify-self: start; }
+.topbar > :nth-child(2) { justify-self: center; text-align: center; }
+.index-btn { min-height: var(--tap); display: inline-flex; align-items: center; }
+.theme-toggle { min-height: var(--tap); display: inline-flex; align-items: center; gap: var(--s1); }
+.theme-toggle span { font-weight: 400; padding-bottom: 2px; border-bottom: var(--hair-w) solid transparent; }
+:root:not([data-theme="night"]) .theme-toggle .day,
+:root[data-theme="night"] .theme-toggle .night { font-weight: 500; border-bottom-color: var(--accent); }
+
+/* ---------- 页头：标签小字（左栏目名、右刊头）+ 一级 + 备注 ---------- */
+.masthead { padding: calc(var(--gap-block) + env(safe-area-inset-top)) 0 var(--s5); }
+.masthead > * + * { margin-top: var(--s3); }
+.masthead + .rule { margin-bottom: var(--s5); }
+.masthead-kicker { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s3); flex-wrap: wrap; }
+
+/* ---------- 打开侧边索引的三个入口：页头大标题、滚动后的窄条、聊天页的对方名字 ----------
+   不加箭头、不加汉堡；唯一的暗示是字后面右下一小段 Pine 短线 */
+.title-btn { display: inline-block; min-height: var(--tap); text-align: left; }
+.hint::after {
+  content: ""; display: inline-block; vertical-align: baseline;
+  width: var(--s4); margin-left: var(--s2);
+  border-top: var(--rule-w) solid var(--accent);
+}
+/* 滚过大标题以后，顶上一条窄条：只有小号页名（标签样式），点它开面板 */
+.peekbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 20;
+  background: var(--paper);
+  border-bottom: var(--hair-w) solid var(--hair);
+  padding-top: env(safe-area-inset-top);
+  opacity: 0; visibility: hidden;
+  transition: opacity var(--dur) var(--ease), visibility 0s linear var(--dur);
+}
+.peekbar.is-on { opacity: 1; visibility: visible; transition: opacity var(--dur) var(--ease); }
+.peekbar-btn { display: flex; align-items: center; width: 100%; max-width: var(--grid-max); min-height: var(--tap); margin: 0 auto; padding: 0 var(--gutter); }
+@media (prefers-reduced-motion: reduce) { .peekbar, .peekbar.is-on { transition: none; } }
+
+/* ---------- 区块头：重线 + 序号 + 二级 ---------- */
+.section { margin-top: var(--gap-block); }
+.section-head {
+  border-top: var(--rule-w) solid var(--rule);
+  padding-top: var(--s3);
+  margin-bottom: var(--s2);
+  align-items: baseline;
+}
+.section-head .t-h2 { grid-column: calc(var(--col-label) + 1) / -1; display: flex; flex-direction: column; align-items: flex-start; gap: var(--s1); }
+/* 窄屏：右侧计数挪到标题下面一行；够宽时才回到右边 */
+@media (min-width: 480px) {
+  .section-head .t-h2 { flex-direction: row; justify-content: space-between; align-items: baseline; gap: var(--s3); }
+}
+
+/* ---------- 列表行：左标签 + 右内容 + 可选右侧数字 ---------- */
+.row {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr));
+  column-gap: var(--gap-col);
+  padding: var(--gap-row) 0;
+  border-bottom: var(--hair-w) solid var(--hair);
+  align-items: baseline;
+}
+.row:last-child { border-bottom: 0; }
+.row-label { grid-column: 1 / span var(--col-label); display: flex; gap: var(--s2); align-items: baseline; }
+.row-body  { grid-column: calc(var(--col-label) + 1) / -1; display: flex; gap: var(--s3); align-items: baseline; min-width: 0; }
+.row-main  { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.row-main > * + * { margin-top: var(--s1); }
+.row-end   { flex: none; text-align: right; }
+a.row:active, button.row:active { background: var(--sunk); }
+
+/* ---------- 按钮：一种形状，三种填法。全站没有黑色实心块 ----------
+   主 .is-primary = Pine Smoke 实心、浅色字；次（默认）= 细边框；取消 / 拒绝 .is-text = 纯文字 */
+.btn {
+  min-height: var(--tap);
+  padding: 0 var(--s4);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s2);
+  border: var(--hair-w) solid var(--ink);
+  border-radius: var(--radius);
+  font: var(--t7-weight) var(--t7-size)/1 var(--t7-font);
+  letter-spacing: var(--t7-track);
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.btn.is-primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn.is-text    { border-color: transparent; padding: 0 var(--s3); }
+.btn:disabled   { border-color: var(--hair); color: var(--ink-2); background: none; cursor: default; }
+.btn:active:not(:disabled) { opacity: .7; }
+.btn-row { display: flex; gap: var(--s2); flex-wrap: wrap; }
+
+/* ---------- 开关 ---------- */
+.switch {
+  appearance: none; -webkit-appearance: none; margin: 0; flex: none;
+  width: 40px; height: 22px;
+  border: var(--hair-w) solid var(--ink-3);
+  border-radius: var(--radius);
+  position: relative; cursor: pointer;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.switch::before {
+  content: ""; position: absolute; top: 2px; left: 2px;
+  width: 16px; height: 16px; border-radius: 1px;
+  background: var(--ink-3);
+  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.switch:checked { background: var(--accent); border-color: var(--accent); }
+.switch:checked::before { transform: translateX(18px); background: var(--on-accent); }
+
+/* ---------- 输入框：无盒，只有一条底线 ---------- */
+.field { display: block; }
+.field > .t-label { display: block; margin-bottom: var(--s1); }
+.input {
+  display: block; width: 100%;
+  min-height: var(--tap);
+  padding: var(--s2) 0;
+  border: 0; border-bottom: var(--hair-w) solid var(--ink-3);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: var(--t5-weight) var(--t5-size)/var(--t5-line) var(--t5-font); /* 16px：iOS 不缩放 */
+  resize: none; outline: none;
+}
+.input::placeholder { color: var(--ink-2); }
+.input:focus { border-bottom-color: var(--ink); }
+.field .t-note { margin-top: var(--s1); }
+.field.is-error .input { border-bottom-color: var(--warn); }
+.field.is-error .t-note { color: var(--warn); }
+
+/* ---------- 空状态 ---------- */
+.empty { padding: var(--gap-block) 0; }
+.empty > * + * { margin-top: var(--s2); }
+
+/* ---------- 加载态：一条发丝线上走一段墨 ---------- */
+.loading { position: relative; height: var(--hair-w); background: var(--hair); overflow: hidden; }
+.loading::after {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: 30%;
+  background: var(--ink);
+  animation: loading 1.4s var(--ease) infinite;
+}
+@keyframes loading { from { transform: translateX(-100%); } to { transform: translateX(340%); } }
+@media (prefers-reduced-motion: reduce) { .loading::after { animation: none; width: 100%; opacity: .3; } }
+
+/* ---------- 弹窗 / 抽屉 / toast ---------- */
+.scrim {
+  position: fixed; inset: 0; z-index: 30;
+  background: var(--scrim);       /* 很淡，不把底下的页面糊成泥 */
+  display: none; align-items: center; justify-content: center;
+  padding: var(--gutter);
+}
+.scrim.is-open { display: flex; }
+.scrim.is-sheet { align-items: flex-end; padding: 0; }
+.dialog { width: 100%; max-width: 364px; padding: var(--s5); background: var(--paper); border-radius: var(--radius); }
+.dialog > * + * { margin-top: var(--s3); }
+.dialog .card-foot { padding-top: var(--s3); }
+.drawer {
+  width: 100%; max-width: var(--grid-max);
+  background: var(--paper);
+  border-top: var(--rule-w) solid var(--rule);   /* 方角；能拖靠把手那根短线 */
+  padding: var(--s3) var(--gutter) calc(var(--s3) + env(safe-area-inset-bottom));
+  max-height: 80vh; overflow: auto;
+}
+.drawer-handle { width: 32px; margin: 0 auto var(--s4); border-top: var(--hair-w) solid var(--ink-3); }
+.toast {
+  position: fixed; left: 50%; z-index: 40;
+  bottom: calc(var(--s4) + env(safe-area-inset-bottom));
+  transform: translate(-50%, var(--s4)); opacity: 0; pointer-events: none;
+  background: var(--ink); color: var(--paper);
+  border-radius: var(--radius);
+  padding: var(--s3) var(--s4);
+  font: var(--t6-weight) var(--t6-size)/var(--t6-line) var(--t6-font);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  max-width: calc(100% - 2 * var(--gutter));
+}
+.toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+
+/* ---------- 侧边索引（定稿 G）：从左侧滑出的目录页 ----------
+   她是左撇子、单手：五项放在左下拇指区，每项一行摘要；上半只放刊头和日期，放不下先压上半，不压五项。
+   点大标题 / 窄条 / 聊天对方名字打开；不做边缘滑动（安卓手势导航的左右边缘是系统“返回”） */
+.index-scrim {
+  position: fixed; inset: 0; z-index: 30;
+  background: var(--scrim);
+  opacity: 0; visibility: hidden;
+  transition: opacity var(--dur) var(--ease), visibility 0s linear var(--dur);
+}
+.index-panel {
+  position: fixed; top: 0; left: 0; z-index: 31;
+  height: 100vh; height: 100dvh;   /* dvh：跟着地址栏伸缩，底行不会落到屏幕外 */
+  width: 82%; max-width: 420px;
+  background: var(--paper);
+  border-right: var(--hair-w) solid var(--hair);
+  display: flex; flex-direction: column;
+  padding: calc(var(--s2) + env(safe-area-inset-top)) var(--gutter) calc(var(--s5) + env(safe-area-inset-bottom));   /* 底行留出手势条 + 一档间距 */
+  overflow-y: auto;
+  transform: translateX(-100%); visibility: hidden;
+  transition: transform var(--dur) var(--ease), visibility 0s linear var(--dur);
+}
+:root.index-open .index-scrim { opacity: 1; visibility: visible; transition: opacity var(--dur) var(--ease); }
+:root.index-open .index-panel { transform: none; visibility: visible; transition: transform var(--dur) var(--ease); }
+@media (prefers-reduced-motion: reduce) {
+  .index-scrim, .index-panel, :root.index-open .index-scrim, :root.index-open .index-panel { transition: none; }
+}
+.index-panel:focus { outline: none; }   /* 打开时焦点落在面板本身，不在 CLOSE 上画框 */
+.index-head { display: flex; justify-content: space-between; align-items: center; min-height: var(--tap); }
+.index-list { list-style: none; margin-top: var(--gap-block); border-top: var(--rule-w) solid var(--rule); }
+.index-list li { border-bottom: var(--hair-w) solid var(--hair); }
+.index-list a { display: flex; align-items: baseline; gap: var(--s4); padding: var(--s4) 0; }
+.index-list a .t-label { flex: none; min-width: 2.2em; }
+.index-list a .t-h2 { position: relative; padding-bottom: var(--s2); }   /* 二级：一级太大 */
+.index-list a[aria-current="page"] .t-h2::after {   /* 当前页：一小段 Pine Smoke 线，跟 v2 tab 选中态同一个语言 */
+  content: ""; position: absolute; left: 0; bottom: 0; width: var(--s5);
+  border-top: var(--rule-w) solid var(--accent);
+}
+.index-foot { margin-top: auto; padding-top: var(--gap-block); display: flex; justify-content: space-between; align-items: center; }
+/* G：上半刊头 + 日期（可压缩），五项贴底，底行 CLOSE（左，拇指够得着）+ DAY / NIGHT */
+.index-dateline { margin-top: var(--s5); flex: 0 1 auto; min-height: 0; overflow: hidden; }
+.index-dateline > * + * { margin-top: var(--s2); }
+.index-nav { margin-top: auto; flex: none; }
+.index-nav .index-list { margin-top: var(--s5); }
+.index-nav .index-list a .t-h2 { padding-bottom: var(--s1); }
+.index-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.index-sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }   /* 摘要永远一行，超长末尾省略 */
+.index-nav ~ .index-foot { margin-top: 0; padding-top: var(--s3); flex: none; }
+/* 屏幕矮（地址栏露出来、横屏）：先收上半，五项不动 */
+@media (max-height: 820px) { .index-dateline .t-note { display: none; } }
+@media (max-height: 720px) { .index-dateline { display: none; } }
+:root.index-open body { overflow: hidden; }
+
+/* ---------- 图标：只用 Phosphor Light（foundation/icons/，MIT），不许手画 ----------
+   一个尺寸 --icon；用 mask 画，颜色 = currentColor，跟所在那行字同色。
+   类名 = ph-<Phosphor 名字>；库里没有的就不用图标，写字。 */
+.ico {
+  display: inline-block; flex: none;
+  width: var(--icon); height: var(--icon);
+  background: currentColor;
+  -webkit-mask: center / contain no-repeat; mask: center / contain no-repeat;
+}
+.ph-file-text        { -webkit-mask-image: none;        mask-image: none; }
+.ph-magnifying-glass { -webkit-mask-image: none; mask-image: none; }
+.ph-pencil-simple    { -webkit-mask-image: none;    mask-image: none; }
+.ph-terminal         { -webkit-mask-image: none;         mask-image: none; }
+.ph-clipboard-text   { -webkit-mask-image: none;   mask-image: none; }
+.ph-play             { -webkit-mask-image: none;             mask-image: none; }
+.ph-plus             { -webkit-mask-image: none;             mask-image: none; }
+.ph-file             { -webkit-mask-image: none;             mask-image: none; }
+.ph-file-doc         { -webkit-mask-image: none;         mask-image: none; }
+.ph-file-pdf         { -webkit-mask-image: none;         mask-image: none; }
+.ph-file-image       { -webkit-mask-image: none;       mask-image: none; }
+
+/* ==========================================================================
+   聊天
+   ========================================================================== */
+.chat { padding-top: var(--s4); }
+.msg { display: flex; flex-direction: column; align-items: flex-start; }
+.msg.is-her { align-items: flex-end; }
+.msg + .msg { margin-top: var(--s2); }            /* 同一人连续几段 */
+.msg.is-turn { margin-top: var(--s5); }            /* 换人 */
+.msg-text { max-width: 86%; overflow-wrap: anywhere; }
+.msg-text > * + * { margin-top: var(--s2); }
+.msg-meta { margin-top: var(--s1); }
+
+/* 方案 A：她的话落在凹面上，无边框；我的话无底色 */
+:root[data-bubble="a"] .msg.is-her .msg-text {
+  background: var(--sunk); border-radius: var(--radius); padding: var(--s2) var(--s3);
+}
+/* 方案 B：完全无气泡。她的话整块靠右、收窄（段内仍左对齐，长段好读）；换人处一根发丝线 */
+:root[data-bubble="b"] .msg.is-her .msg-text { max-width: 78%; }
+:root[data-bubble="b"] .msg.is-turn {
+  border-top: var(--hair-w) solid var(--hair);
+  padding-top: var(--s5); margin-top: var(--s5);
+}
+:root[data-bubble="b"] .sysline.is-center + .msg.is-turn { border-top: 0; padding-top: 0; }
+
+/* markdown */
+.md ul, .md ol { padding-left: 1.2em; }
+.md li + li { margin-top: var(--s1); }
+.md blockquote { border-left: var(--hair-w) solid var(--ink-3); padding-left: var(--s3); color: var(--ink-2); }
+.md table { border-collapse: collapse; width: 100%; }
+.md th { text-align: left; padding: var(--s2) var(--s3) var(--s2) 0; border-bottom: var(--rule-w) solid var(--rule); }
+.md td { padding: var(--s2) var(--s3) var(--s2) 0; border-bottom: var(--hair-w) solid var(--hair); font-size: var(--t6-size); line-height: var(--t6-line); }
+
+/* 代码块：凹面，不算卡片 */
+.codeblock { position: relative; width: 100%; background: var(--sunk); border-radius: var(--radius); }
+.codeblock pre { margin: 0; padding: var(--s6) var(--s3) var(--s3); overflow-x: auto; }
+.codeblock > .t-label { position: absolute; top: var(--s2); left: var(--s3); }
+.codeblock .copy { position: absolute; top: 0; right: 0; min-height: 32px; padding: 0 var(--s3); white-space: nowrap; }
+
+/* 语音条 */
+.voice { display: flex; align-items: center; gap: var(--s3); min-height: var(--tap); }
+.voice .play { width: 28px; height: 28px; border: var(--hair-w) solid var(--ink); border-radius: var(--radius); display: grid; place-items: center; }
+.voice .wave { display: flex; align-items: center; gap: 2px; height: 20px; }
+.voice .wave i { display: block; width: 1px; background: var(--ink-2); }
+.voice-trans { margin-top: var(--s2); padding-left: var(--s3); border-left: var(--hair-w) solid var(--ink-3); max-width: 86%; }
+.voice-trans > * + * { margin-top: var(--s1); }
+
+/* 过程区：每轮回复上方，收着思考、工具行、代码块。没有面，左侧一根发丝竖线 */
+.thought { margin-bottom: var(--s2); }
+.thought > summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: center; gap: var(--s2); min-height: var(--tap);
+}
+.thought > summary::-webkit-details-marker { display: none; }
+.thought > summary .t-note { color: var(--ink-2); }
+.thought > summary::after { content: "+"; font: var(--t7-weight) var(--t7-size)/1 var(--t7-font); color: var(--ink-3); }
+.thought[open] > summary::after { content: "−"; }
+.thought-body { border-left: var(--hair-w) solid var(--hair); padding-left: var(--s3); margin-bottom: var(--s2); }
+.thought-body > * + * { margin-top: var(--s2); }
+.thought-body > :first-child { margin-top: 0; }
+.thought-text { font: var(--t6-weight) var(--t6-size)/var(--t6-line) var(--t6-font); color: var(--ink-2); }
+
+/* 表情包：单独一张小图，不包任何东西（样张里用假照片底色占位） */
+.sticker { width: 112px; height: 112px; }
+
+/* 系统行：工具调用 / 收藏 / 指令卡推送，全部是一行备注字 */
+.sysline { display: flex; align-items: center; gap: var(--s2); color: var(--ink-2); margin-top: var(--s2); }
+.sysline .t-note { color: var(--ink-2); }   /* 13px，可以用次要字 */
+.sysline .t-label { color: var(--ink-3); }  /* 11px 标签仍是 Iron Grey */
+.sysline.is-center { justify-content: center; margin: var(--s4) 0; }
+.sysline.is-center::before, .sysline.is-center::after { content: ""; flex: 1; border-top: var(--hair-w) solid var(--hair); }
+
+/* 聊天里的卡片：跟正文一样宽，左右对齐正文 */
+.msg .card { width: 100%; }
+
+/* 文件卡（定稿 D）：一行，Phosphor 文件图标 + 文件名 + 右侧大小。高度固定，任何文件名都不撑高。
+   长名字由 theme.js 按实际宽度做中间省略（保留开头和结尾，扩展名永远在）；全名在 title 里，长按弹 toast。
+   连着发好几个：卡片之间只隔 --s1 */
+.filecard {
+  display: flex; align-items: center; gap: var(--s3);
+  height: calc(var(--t5-size) * var(--t5-line) + 2 * var(--s3)); min-height: var(--tap);
+  padding: 0 var(--s4);
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+}
+.card.filecard > * + * { margin-top: 0; }
+.filecard .file-name { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }   /* 没有脚本时退回末尾省略 */
+.filecard .t-label { flex: none; white-space: nowrap; }
+.filecard + .filecard { margin-top: var(--s1); }
+/* 已处理的审批：收成一行灰字，不再是整张卡 */
+.sysline.is-settled { margin-top: 0; min-height: var(--tap); }
+
+/* 输入区 */
+.composer {
+  position: fixed; left: 0; right: 0; z-index: 19;
+  bottom: 0;   /* 贴底，下面不再有 tab */
+  background: var(--paper);
+  border-top: var(--hair-w) solid var(--hair);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.composer-inner { max-width: var(--grid-max); margin: 0 auto; padding: 0 var(--gutter); display: flex; align-items: flex-end; gap: var(--s3); }
+.composer .input { border-bottom: 0; flex: 1; }
+.composer .side { min-height: var(--tap); display: flex; align-items: center; }
+
+/* ==========================================================================
+   版式（每页一种，全部落在 6 列栅格上）
+   ========================================================================== */
+
+/* 封面（首页）：一个大数字当主角，其余很少 */
+.cover { padding-top: var(--gap-chapter); }
+.cover-hero { align-items: end; }
+.cover-hero .t-display { grid-column: 1 / span 4; }
+.cover-hero aside { grid-column: 5 / -1; text-align: right; padding-bottom: var(--s2); }
+.cover-hero aside > * + * { margin-top: var(--s1); }
+.cover-dek { margin-top: var(--s5); }
+
+/* 目录（US）：序号 + 左标签 + 右内容 + 右对齐数字 */
+.toc-entry { align-items: baseline; }
+.toc-entry .row-label .t-label:first-child { min-width: 2.2em; }
+
+/* 内页（信、单条收藏）：大留白，一段字或一张图独占 */
+.spread { padding: var(--gap-chapter) 0; }
+.spread-body { grid-column: 2 / -1; }
+.spread-body > * + * { margin-top: var(--s4); }
+.spread-sign { text-align: right; margin-top: var(--s6); }
+.spread-solo { grid-column: 1 / -1; text-align: center; padding: var(--gap-block) 0; }
+
+/* 相册：照片可出血、大小不一 */
+.photo { background: var(--photo-1); aspect-ratio: 4 / 5; position: relative; overflow: hidden; }
+.photo.is-wide { aspect-ratio: 3 / 2; }
+.photo.is-sq   { aspect-ratio: 1 / 1; }
+.photo figcaption { position: absolute; left: var(--s2); bottom: var(--s2); }
+.album { row-gap: var(--s3); }
+.album-cap { margin-top: var(--s2); }
+.album-cap > * + * { margin-top: var(--s1); }

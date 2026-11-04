@@ -1,0 +1,79 @@
+/* Original HOME material rules, shared with study; optical filter definitions stay in each document. */
+  /* Sitewide material: scoped to page cards and permanent bars; geometry stays local. */
+  :root:is([data-bubble-texture="glass"],[data-bubble-texture="water"]) :is(:is(#app,#pageKeepDetail) .row:is(.ai,.human) .bubble:not(.keep-share-bubble),
+    :is(#app,#pageKeepDetail) .voice-msg .vb-body, :is(#app,#pageKeepDetail) .voice-msg .vb-transcript, :is(#app,#pageKeepDetail) .composer .field),
+  :root:is([data-bubble-texture="glass"],[data-bubble-texture="water"]) :is(
+    .menu-scroll .card, .menu-scroll .jot, .menu-scroll .music-card,
+    #mindPage .mind-body :is(.pulse,.list,.sec,.md-card), #viewNow :is(.now,.stream),
+    #usDaily :is(.cal-card,.pd-card,.td-card,.an-card), #usKeep .card, #pageThings .keep-card,
+    .profile-scroll :is(.card,.settings-card), .sites-scroll .card, .keep-sub .keep-card, .keep-grid-cell, .keep-note, .keep-compose-field,
+    .subpage-card, .keep-sheet, .keep-menu, .dp-sheet, .thought-sheet, .sticker-panel, .call-sheet, .clip-menu, .session-pop, .msg-menu-actions, .ledger-preview-menu,
+    .lp-panel, .lp-editor, #detail :is(.dt-head,.dt-text,.rings-sec,.addring),
+    .sitewide-subpage :is(.sites-back,.keep-detail-back,.keep-detail-more,.things-return), #dtBack
+  ),
+  :root:is([data-bubble-texture="glass"],[data-bubble-texture="water"]) :is(
+    .sitewide-subpage :is(.sites-back,.keep-detail-back,.keep-detail-more,.things-return), #dtBack, #previewNavBtn, .ledger-actions-pill, #tabbar, .sitewide-topnav
+  ),
+  :root:is([data-bubble-texture="glass"],[data-bubble-texture="water"]) #studyRoom :is(.card,.sheet,.flip-card) {
+    --call-glass-edge:rgba(255,255,255,.8);
+    --call-glass-hi:rgba(255,255,255,.8);
+  }
+  :root:is([data-bubble-texture="glass"],[data-bubble-texture="water"]) :is(
+    .menu-scroll .card, .menu-scroll .jot, .menu-scroll .music-card,
+    #mindPage .mind-body :is(.pulse,.list,.sec,.md-card), #viewNow :is(.now,.stream),
+    #usDaily :is(.cal-card,.pd-card,.td-card,.an-card), #usKeep .card, #pageThings .keep-card,
+    .profile-scroll :is(.card,.settings-card), .sites-scroll .card, .keep-sub .keep-card, .keep-grid-cell, .keep-note, .keep-compose-field,
+    .subpage-card, .keep-sheet, .keep-menu, .dp-sheet, .thought-sheet, .sticker-panel, .call-sheet, .clip-menu, .session-pop, .msg-menu-actions, .ledger-preview-menu,
+    .lp-panel, .lp-editor, #detail :is(.dt-head,.dt-text,.rings-sec,.addring),
+    .sitewide-subpage :is(.sites-back,.keep-detail-back,.keep-detail-more,.things-return), #dtBack
+  ),
+  :root:is([data-bubble-texture="glass"],[data-bubble-texture="water"]) :is(
+    .sitewide-subpage :is(.sites-back,.keep-detail-back,.keep-detail-more,.things-return), #dtBack
+  ),
+  :root:is([data-bubble-texture="glass"],[data-bubble-texture="water"]) #studyRoom :is(.card,.sheet,.flip-card) {
+    background:linear-gradient(160deg,
+      color-mix(in srgb, var(--bubble-ai-bg) calc(var(--card-glass-opacity, 40%) + 10%), transparent),
+      color-mix(in srgb, var(--composer-bg) var(--card-glass-opacity, 40%), transparent));
+    border-color:var(--call-glass-edge);
+    box-shadow:inset 0 1px 0 var(--call-glass-hi),
+      0 5px 16px rgb(from var(--paper-shadow-deep) r g b / calc(alpha + .08));
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+  }
+  :root[data-bubble-texture="water"] :is(
+    .menu-scroll .card, .menu-scroll .jot, .menu-scroll .music-card,
+    #mindPage .mind-body :is(.pulse,.list,.sec,.md-card), #viewNow :is(.now,.stream),
+    #usDaily :is(.cal-card,.pd-card,.td-card,.an-card), #usKeep .card, #pageThings .keep-card,
+    .profile-scroll :is(.card,.settings-card), .sites-scroll .card, .keep-sub .keep-card, .keep-grid-cell, .keep-note, .keep-compose-field,
+    .subpage-card, .keep-sheet, .keep-menu, .dp-sheet, .thought-sheet, .sticker-panel, .call-sheet, .clip-menu, .session-pop, .msg-menu-actions, .ledger-preview-menu,
+    .lp-panel, .lp-editor, #detail :is(.dt-head,.dt-text,.rings-sec,.addring),
+    .sitewide-subpage :is(.sites-back,.keep-detail-back,.keep-detail-more,.things-return), #dtBack
+  ),
+  :root[data-bubble-texture="water"] :is(
+    .sitewide-subpage :is(.sites-back,.keep-detail-back,.keep-detail-more,.things-return), #dtBack
+  ),
+  :root[data-bubble-texture="water"] #studyRoom :is(.card,.sheet,.flip-card) {
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--call-glass-hi) 18%, transparent),
+        transparent 38%, color-mix(in srgb, var(--call-glass-hi) 6%, transparent) 64%, transparent),
+      linear-gradient(color-mix(in srgb, var(--bubble-ai-bg) var(--card-glass-opacity, 12%), transparent),
+        color-mix(in srgb, var(--composer-bg) var(--card-glass-opacity, 12%), transparent));
+    box-shadow:inset 0 1.5px 0 var(--call-glass-hi),
+      inset 0 -1px 0 color-mix(in srgb, var(--call-glass-hi) 55%, transparent),
+      inset 1px 0 0 color-mix(in srgb, var(--call-glass-hi) 28%, transparent),
+      inset -1px 0 0 color-mix(in srgb, var(--call-glass-hi) 28%, transparent),
+      0 3px 10px color-mix(in srgb, var(--paper-shadow-deep) 35%, transparent);
+  }
+  :root[data-bubble-texture="water"] :is(
+    .menu-scroll .card, .menu-scroll .jot, .menu-scroll .music-card,
+    #mindPage .mind-body :is(.pulse,.list,.sec,.md-card), #viewNow :is(.now,.stream),
+    #usDaily :is(.cal-card,.pd-card,.td-card,.an-card), #usKeep .card, #pageThings .keep-card,
+    .profile-scroll :is(.card,.settings-card), .sites-scroll .card, .keep-sub .keep-card, .keep-grid-cell, .keep-note, .keep-compose-field,
+    .subpage-card, .keep-sheet, .keep-menu, .dp-sheet, .thought-sheet, .sticker-panel, .call-sheet, .clip-menu, .session-pop, .msg-menu-actions, .ledger-preview-menu,
+    .lp-panel, .lp-editor, #detail :is(.dt-head,.dt-text,.rings-sec,.addring),
+    .sitewide-subpage :is(.sites-back,.keep-detail-back,.keep-detail-more,.things-return), #dtBack
+  ),
+  :root[data-bubble-texture="water"] #studyRoom :is(.card,.sheet,.flip-card) {
+    -webkit-backdrop-filter:url(#waterGlassCardRefraction);
+    backdrop-filter:url(#waterGlassCardRefraction);
+  }
