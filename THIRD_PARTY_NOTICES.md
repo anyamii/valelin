@@ -20,14 +20,20 @@ The Noto license text also credits Google Inc.; the Montserrat license text
 credits the 2024 Montserrat.Git Project Authors. The older embedded copyright
 notices above are preserved, not replaced by those distribution license headers.
 
-Only verified Iconoir/Phosphor drawing groups were restored. Unknown SVG drawing
-geometry is excluded; elementary placeholders remain. The neutral application
+Icons come from Iconoir (MIT, © Luca Burgio); some have been modified.
+23 embedded occurrences fully match Iconoir 7.12.1. A further 123 source
+occurrences are distributed as derived from Iconoir (possibly modified), based
+on the source owner's confirmation. Comparison with Iconoir 6.11.0, 5.5.2 and
+4.9.2 yielded 0 additional complete matches for each version. 22 standalone
+copies match Phosphor core 2.1.1. Five non-icon/text-bearing occurrences remain
+excluded pending review; their placeholders remain. See ASSET_PROVENANCE.md
+for counting rules and exceptions. The neutral application
 icon and letter avatars are authored for the public edition under the project
 MIT license. The MP3 is excluded; the voice scene uses its transcript.
 The original interface and layout remain credited to Companion Channel
 contributors as stated in LICENSE.
 
-## Iconoir 7.12.1 — MIT
+## Iconoir 7.12.1 and Iconoir derivatives — MIT
 
 Upstream: https://github.com/iconoir-icons/iconoir
 

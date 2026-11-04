@@ -89,8 +89,8 @@
     --accent-fg: #ffffff;
     /* 猫爪 —— thinking 的折叠标记。一个掌垫 + 四个趾，
        hollow 是描边（收起），solid 是填实（展开）。 */
-    --paw-hollow: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Ccircle cx="12" cy="12" r="4"/%3E%3C/svg%3E');
-    --paw-solid: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Ccircle cx="12" cy="12" r="4"/%3E%3C/svg%3E');
+    --paw-hollow: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.7"><ellipse cx="12" cy="15.4" rx="4.5" ry="4"/><ellipse cx="5.6" cy="9.6" rx="2.2" ry="2.6"/><ellipse cx="10" cy="6.2" rx="2.1" ry="2.7"/><ellipse cx="14.6" cy="6.1" rx="2.1" ry="2.7"/><ellipse cx="18.7" cy="9.8" rx="2.2" ry="2.6"/></svg>');
+    --paw-solid: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><ellipse cx="12" cy="15.4" rx="4.8" ry="4.3"/><ellipse cx="5.4" cy="9.5" rx="2.4" ry="2.8"/><ellipse cx="9.9" cy="6" rx="2.3" ry="2.9"/><ellipse cx="14.7" cy="5.9" rx="2.3" ry="2.9"/><ellipse cx="18.9" cy="9.7" rx="2.4" ry="2.8"/></svg>');
     --think-flourish: rgba(120,142,165,.48);
     --think-label: #6A7E8E;
     --think-body: #56687A;
@@ -6459,18 +6459,18 @@
       <feTurbulence type="fractalNoise" baseFrequency="0.035 0.006" numOctaves="2" seed="8" result="waterNoise"/>
       <feDisplacementMap id="waterGlassCardDisplacement" in="SourceGraphic" in2="waterNoise" scale="15" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
-    <g id="ic-flower"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></g>
-    <g id="ic-music"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></g>
+    <g id="ic-flower"><circle cx="12" cy="12" r="4"/><ellipse cx="12" cy="5" rx="2.5" ry="4"/><ellipse cx="12" cy="19" rx="2.5" ry="4"/><ellipse cx="5" cy="12" rx="4" ry="2.5"/><ellipse cx="19" cy="12" rx="4" ry="2.5"/></g>
+    <g id="ic-music"><path d="M9 18V6l12-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></g>
     <!-- tab: home -->
-    <g id="ic-home"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></g>
+    <g id="ic-home"><path d="M3 10.2 12 3.4l9 6.8V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9.4 21v-7.2h5.2V21"/></g>
     <!-- tab: memory (star) -->
-    <g id="ic-memory"><circle cx="12" cy="12" r="3" fill="currentColor"/></g>
+    <g id="ic-memory"><path d="M12 3.5c.8 5 3.5 7.7 8.5 8.5-5 .8-7.7 3.5-8.5 8.5-.8-5-3.5-7.7-8.5-8.5 5-.8 7.7-3.5 8.5-8.5Z"/></g>
     <!-- tab: chat (cat head · filled) -->
     <g id="ic-chat" fill="currentColor" stroke="none"><g transform="translate(0.800,4.906) scale(0.014258)"><g transform="translate(0,995) scale(0.1,-0.1)"><circle cx="12" cy="12" r="3" fill="currentColor"/></g></g></g>
     <!-- tab: us (two overlapping circles) -->
-    <g id="ic-us"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></g>
+    <g id="ic-us"><circle cx="9.2" cy="9.2" r="5.4"/><circle cx="14.8" cy="14.8" r="5.4"/></g>
     <!-- tab: more -->
-    <g id="ic-more"><circle cx="12" cy="12" r="3" fill="currentColor"/></g>
+    <g id="ic-more"><path d="M4 7h16M4 12h16M4 17h11"/></g>
     <!-- 签名 SVG（fill: currentColor，跟主题变色）— from sig_g.txt -->
   </defs>
 </svg>
@@ -6496,7 +6496,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
       <button class="backbtn hidden" id="sessionBtn" type="button" aria-label="API 窗口" title="API 窗口">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="14" height="14" rx="3"/><path d="M8 3h9a4 4 0 0 1 4 4v9"/></svg>
       </button>
       <span class="control-divider" aria-hidden="true"></span>
       <span class="model-btn" id="modelBtn" aria-live="polite" aria-label="当前模型">Sonnet</span>
@@ -6510,11 +6510,11 @@
       </button>
       <span class="ledger-menu-divider" aria-hidden="true"></span>
       <button class="ledger-menu-btn" id="ledgerMenuBtn" type="button" aria-label="更多" title="更多">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="4" r=".5"/><circle cx="12" cy="12" r=".5"/><circle cx="12" cy="20" r=".5"/></svg>
       </button>
       </div>
       <button class="topbtn more hidden" id="moreBtn" type="button" aria-label="个人信息" title="个人信息">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
       </button>
     </div>
     <button class="avatar hidden" id="avatarBtn" aria-label="查看个人信息" title="个人信息"></button>
@@ -6534,8 +6534,8 @@
   </div>
   <div class="ledger-preview-menu ledger-preview-more-menu" id="ledgerPreviewMoreMenu" role="menu" aria-label="更多操作" hidden>
     <button type="button" role="menuitem" data-ledger-action="window"><svg viewBox="0 0 24 24"><path d="M7 2L16.5 2L21 6.5V19"/><path d="M3 20.5V6.5C3 5.67157 3.67157 5 4.5 5H14.2515C14.4106 5 14.5632 5.06321 14.6757 5.17574L17.8243 8.32426C17.9368 8.43679 18 8.5894 18 8.74853V20.5C18 21.3284 17.3284 22 16.5 22H4.5C3.67157 22 3 21.3284 3 20.5Z"/><path d="M14 5V8.4C14 8.73137 14.2686 9 14.6 9H18"/></svg><span>窗口</span></button>
-    <button type="button" role="menuitem" data-ledger-action="ledger"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>番茄钟</span></button>
-    <button type="button" role="menuitem" class="is-dim" data-ledger-action="search"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>查找</span></button>
+    <button type="button" role="menuitem" data-ledger-action="ledger"><svg viewBox="0 0 24 24"><path d="M9 6L20 6"/><path d="M5 6.01L5.01 5.99889"/><path d="M5 12.01L5.01 11.9989"/><path d="M3.8 17.8L4.6 18.6L6.6 16.6"/><path d="M9 12L20 12"/><path d="M9 18L20 18"/></svg><span>番茄钟</span></button>
+    <button type="button" role="menuitem" class="is-dim" data-ledger-action="search"><svg viewBox="0 0 24 24"><path d="M17 17L21 21"/><circle cx="11" cy="11" r="8"/></svg><span>查找</span></button>
   </div>
   <section class="command-card" id="commandCard" aria-label="进行中的指令" aria-live="polite" hidden>
     <div class="command-card-head"><span>● 指令</span><span id="commandCardState">进行中</span></div>
@@ -6610,7 +6610,7 @@
       <span class="quote-bar-label">引用</span>
       <span class="quote-bar-text" id="quoteBarText"></span>
       <button class="quote-bar-cancel" id="quoteBarCancel" type="button" aria-label="取消引用">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
       </button>
     </div>
     <div id="recChip" class="rec-chip" hidden aria-live="polite" aria-label="录音中">
@@ -6621,34 +6621,34 @@
     <div class="composer-row">
     <div class="field">
       <button class="floatbtn clip-in-field" id="clipBtn" aria-label="附件与工具" title="附件与工具" aria-haspopup="true" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.8 8.8a5 5 0 0 1-7.1-7.1l8.8-8.8a3.3 3.3 0 0 1 4.7 4.7l-8.6 8.6a1.6 1.6 0 0 1-2.3-2.3l8-8"/></svg>
       </button>
       <div class="clip-menu" id="clipMenu" hidden role="menu" aria-label="附件与工具">
         <button class="clip-mi" type="button" role="menuitem" data-clip="file">
-          <span class="clip-mi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></span>
+          <span class="clip-mi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.8 8.8a5 5 0 0 1-7.1-7.1l8.8-8.8a3.3 3.3 0 0 1 4.7 4.7l-8.6 8.6a1.6 1.6 0 0 1-2.3-2.3l8-8"/></svg></span>
           <span class="clip-mi-lab">附件</span>
         </button>
         <button class="clip-mi" type="button" role="menuitem" data-clip="terminal">
-          <span class="clip-mi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></span>
+          <span class="clip-mi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m6 8 4 4-4 4"/><path d="M12 16h6"/></svg></span>
           <span class="clip-mi-lab">终端</span>
         </button>
       </div>
       <input type="file" id="clipInput" multiple class="hidden" aria-hidden="true">
       <textarea id="input" rows="1" placeholder="Write a letter..." enterkeyhint="send"></textarea>
       <button class="emojibtn" id="emojiBtn" aria-label="表情包" title="表情包" aria-haspopup="true" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.3a4.2 4.2 0 0 0 7 0"/><line x1="9" y1="9.3" x2="9" y2="10"/><line x1="15" y1="9.3" x2="15" y2="10"/></svg>
       </button>
     </div>
     <button class="floatbtn hidden" id="micBtn" aria-label="语音" title="语音">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><line x1="12" y1="18" x2="12" y2="21.5"/></svg>
     </button>
     <button class="floatbtn send" id="sendBtn" aria-label="发送">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M6.5 10.5L12 5l5.5 5.5"/></svg>
     </button>
     </div>
   </footer>
   <button class="newmsg-pill" id="newMsgBtn" type="button" aria-label="回到最新消息">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg>
     <span>回到最新</span>
   </button>
 </div>
@@ -6657,7 +6657,7 @@
 <section class="terminal-panel" id="terminalPanel" aria-label="终端视图" aria-hidden="true">
   <header class="terminal-top">
     <button class="terminal-back" id="terminalBack" type="button" aria-label="返回聊天">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
     </button>
     <div class="terminal-title">
       <strong>companion terminal</strong>
@@ -6669,7 +6669,7 @@
     <span class="terminal-prompt" aria-hidden="true">&gt;</span>
     <textarea class="terminal-input" id="terminalInput" rows="1" placeholder="type into the same conversation..." enterkeyhint="send" spellcheck="false"></textarea>
     <button class="terminal-send" type="submit" aria-label="发送">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M6.5 10.5 12 5l5.5 5.5"/></svg>
     </button>
   </form>
 </section>
@@ -7252,7 +7252,7 @@
   <div class="sites-page sitewide-subpage" id="chatLookPage" role="dialog" aria-modal="true" aria-label="外观">
     <div class="sites-topbar">
       <button class="sites-back" id="chatLookBack" type="button" aria-label="返回">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M15 5 8 12l7 7"/></svg>
       </button>
       <span class="sites-title">外观 · LOOK</span>
     </div>
@@ -7328,7 +7328,7 @@
   <div class="sites-page sitewide-subpage" id="sitesPage" role="dialog" aria-modal="true" aria-label="站点">
     <div class="sites-topbar">
       <button class="sites-back" id="sitesBack" type="button" aria-label="返回">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M15 5 8 12l7 7"/></svg>
       </button>
       <span class="sites-title">站点 · STATES</span>
     </div>
@@ -7563,7 +7563,7 @@
             <div class="stk-edit-idrow">
               <span id="stkEditId" class="stk-edit-id"></span>
               <button type="button" id="stkRenameBtn" class="stk-rename" aria-label="修改 id" title="改 id">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
               </button>
             </div>
             <div class="stk-rename-edit hidden" id="stkRenameEdit">
@@ -7611,7 +7611,7 @@
      ═══════════════════════════════════════════════════════ -->
 <div class="things-viewer sitewide-subpage" id="thingsViewer" role="dialog" aria-modal="true" aria-labelledby="thingsViewerTitle">
   <div class="sites-topbar">
-    <button type="button" class="things-return" id="thingsViewerBack" aria-label="返回清单"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span class="things-return-label">返回清单</span></button>
+    <button type="button" class="things-return" id="thingsViewerBack" aria-label="返回清单"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg><span class="things-return-label">返回清单</span></button>
     <span class="sites-title" id="thingsViewerTitle"></span>
   </div>
   <iframe class="things-frame" id="thingsFrame" title="预览页面" allow="fullscreen"></iframe>
@@ -7666,7 +7666,7 @@
       </section>
       <a class="home-music home-bare" id="homeMusic" data-home-enter="3" target="_blank" rel="noopener noreferrer" hidden>
         <span class="jot-label">MUSIC</span>
-        <span class="jot-field home-music-field"><span class="home-music-copy"><span class="home-music-title" id="homeMusicTitle"></span><span class="home-music-artist-row"><span class="home-music-artist" id="homeMusicArtist"></span><svg class="home-music-wave" viewBox="0 0 42 12" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></span></span></span>
+        <span class="jot-field home-music-field"><span class="home-music-copy"><span class="home-music-title" id="homeMusicTitle"></span><span class="home-music-artist-row"><span class="home-music-artist" id="homeMusicArtist"></span><svg class="home-music-wave" viewBox="0 0 42 12" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M1 5v2M5 3v6M9 1v10M13 4v4M17 2v8M21 5v2M25 3v6M29 1v10M33 4v4M37 2v8M41 5v2"/></svg></span></span></span>
         <span class="home-music-note" id="homeMusicNote"></span>
       </a>
       <div class="home-tiles" data-home-enter="4">
@@ -7820,7 +7820,7 @@
       <div class="keep-sub sitewide-subpage" id="pageThings">
         <div class="sites-topbar keep-head">
           <button class="sites-back" type="button" id="thingsBack" aria-label="返回留存">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M15 5 8 12l7 7"/></svg>
           </button>
           <span class="sites-title">预览 · PREVIEWS</span>
         </div>
@@ -7833,10 +7833,10 @@
       <div class="keep-sub sitewide-subpage" id="pageYanyu">
         <div class="sites-topbar keep-head">
           <button class="sites-back" type="button" aria-label="返回">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M15 5 8 12l7 7"/></svg>
           </button>
           <span class="sites-title">只言 · WORDS</span>
-          <button class="sites-back keep-filter-btn" type="button" data-keep-filter aria-label="筛选"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></button>
+          <button class="sites-back keep-filter-btn" type="button" data-keep-filter aria-label="筛选"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18"/><path d="M3 12h13"/><path d="M3 19h8"/></svg></button>
         </div>
         <div class="sitewide-subscroll">
         <div class="keep-filter-pad">
@@ -7854,10 +7854,10 @@
       <div class="keep-sub sitewide-subpage" id="pageAlbum">
         <div class="sites-topbar keep-head">
           <button class="sites-back" type="button" aria-label="返回">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M15 5 8 12l7 7"/></svg>
           </button>
           <span class="sites-title">相册 · ALBUM</span>
-          <button class="sites-back keep-filter-btn" type="button" data-keep-filter aria-label="筛选"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></button>
+          <button class="sites-back keep-filter-btn" type="button" data-keep-filter aria-label="筛选"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18"/><path d="M3 12h13"/><path d="M3 19h8"/></svg></button>
         </div>
         <div class="sitewide-subscroll">
         <div class="keep-filter-pad">
@@ -7877,31 +7877,31 @@
 
       <div class="keep-sub keep-detail sitewide-subpage" id="pageKeepDetail">
         <div class="keep-detail-head">
-          <button class="keep-detail-back" type="button" aria-label="返回"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></button>
+          <button class="keep-detail-back" type="button" aria-label="返回"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg></button>
           <span class="keep-detail-meta" id="keepDetailMeta"></span>
-          <button class="keep-detail-more" id="keepMoreBtn" type="button" aria-label="更多"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></button>
+          <button class="keep-detail-more" id="keepMoreBtn" type="button" aria-label="更多"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="4" r=".5"/><circle cx="12" cy="12" r=".5"/><circle cx="12" cy="20" r=".5"/></svg></button>
         </div>
         <div class="keep-detail-scroll" id="keepDetailBody"></div>
         <div class="keep-composer" id="keepComposer">
           <div class="keep-compose-field">
             <textarea id="keepNoteInput" rows="1" placeholder="Write a note..." enterkeyhint="send"></textarea>
-            <button class="keep-emoji" id="keepNoteEmoji" type="button" aria-label="表情包"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></button>
+            <button class="keep-emoji" id="keepNoteEmoji" type="button" aria-label="表情包"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.3a4.2 4.2 0 0 0 7 0"/><line x1="9" y1="9.3" x2="9" y2="10"/><line x1="15" y1="9.3" x2="15" y2="10"/></svg></button>
           </div>
-          <button class="keep-send" id="keepNoteSend" type="button" aria-label="发送"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></button>
+          <button class="keep-send" id="keepNoteSend" type="button" aria-label="发送"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M6.5 10.5L12 5l5.5 5.5"/></svg></button>
         </div>
       </div>
 
       <div class="keep-viewer" id="keepViewer">
-        <div class="keep-viewer-top"><button class="keep-viewer-close" id="keepViewerClose" type="button" aria-label="关闭"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></button><span class="keep-viewer-count" id="keepViewerCount"></span></div>
+        <div class="keep-viewer-top"><button class="keep-viewer-close" id="keepViewerClose" type="button" aria-label="关闭"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.76 17.24L12 12m5.24-5.24L12 12m0 0L6.76 6.76M12 12l5.24 5.24"/></svg></button><span class="keep-viewer-count" id="keepViewerCount"></span></div>
         <div class="keep-viewer-image" id="keepViewerImage"></div>
         <div class="keep-viewer-bottom" id="keepViewerBottom"></div>
       </div>
       <div class="keep-menu" id="keepMenu">
         <button type="button" data-keep-action="original"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 6.5L22 8"/><path d="M16 4.5C16 5.88071 17.1193 7 18.5 7C19.1916 7 19.8175 6.71921 20.2701 6.26541C20.7211 5.81319 21 5.18916 21 4.5C21 3.11929 19.8807 2 18.5 2C17.1193 2 16 3.11929 16 4.5Z"/><path d="M13 2.04938C12.6711 2.01672 12.3375 2 12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17L2.5 21.5L7 20.6622C8.47087 21.513 10.1786 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6625 21.9833 11.3289 21.9506 11"/></svg>看原文</button>
-        <button type="button" data-keep-action="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>分享到对话</button>
-        <button type="button" data-keep-action="tags"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>添加 / 管理标签</button>
-        <button type="button" data-keep-action="clear-context"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>清掉上下文</button>
-        <button type="button" class="danger" data-keep-action="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>取消收藏</button>
+        <button type="button" data-keep-action="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><path d="M15.5 6.5l-7 4"/><path d="M8.5 13.5l7 4"/></svg>分享到对话</button>
+        <button type="button" data-keep-action="tags"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17.4V6.6c0-.33.27-.6.6-.6h13.08c.2 0 .39.1.5.27l3.6 5.4a.6.6 0 0 1 0 .66l-3.6 5.4a.6.6 0 0 1-.5.27H3.6a.6.6 0 0 1-.6-.6z"/></svg>添加 / 管理标签</button>
+        <button type="button" data-keep-action="clear-context"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14M10 11v6M14 11v6"/></svg>清掉上下文</button>
+        <button type="button" class="danger" data-keep-action="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16l-5.92-3.8a2 2 0 0 0-2.16 0L5 21z"/></svg>取消收藏</button>
       </div>
       <div class="keep-overlay-scrim" id="keepScrim"></div>
       <div class="keep-sheet" id="keepFilterSheet">
@@ -7942,7 +7942,7 @@
             </div>
 
             <label class="search" id="searchBox">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+              <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
               <input id="q" type="search" placeholder="搜一件事" autocomplete="off" spellcheck="false" enterkeyhint="search">
               <button class="clr" id="clr" type="button" aria-label="清空">×</button>
             </label>
@@ -8035,7 +8035,7 @@
     <div class="detail sitewide-subpage" id="detail" role="dialog" aria-modal="true">
       <div class="dt-top">
         <button id="dtBack" type="button" aria-label="返回">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M15 5 8 12l7 7"/></svg>
         </button>
         <span class="id" id="dtId"></span>
       </div>
@@ -8156,9 +8156,9 @@
     </div>
     <div class="call-name">Claude</div>
     <div class="call-status">
-      <span class="call-star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></span>
+      <span class="call-star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c.8 5 3.5 7.7 8.5 8.5-5 .8-7.7 3.5-8.5 8.5-.8-5-3.5-7.7-8.5-8.5 5-.8 7.7-3.5 8.5-8.5Z"/></svg></span>
       <span id="callCaptionText">on call</span>
-      <span class="call-star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></span>
+      <span class="call-star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c.8 5 3.5 7.7 8.5 8.5-5 .8-7.7 3.5-8.5 8.5-.8-5-3.5-7.7-8.5-8.5 5-.8 7.7-3.5 8.5-8.5Z"/></svg></span>
     </div>
     <div class="call-timer" id="callTimer">00:00</div>
     <div class="call-quote" id="callQuote">
@@ -8174,20 +8174,20 @@
     </div>
     <div class="call-controls">
       <button class="call-ctrl-btn" id="callMuteBtn" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.75" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0"/><line x1="12" y1="17.5" x2="12" y2="21"/><line x1="8.5" y1="21" x2="15.5" y2="21"/><line x1="3.8" y1="3" x2="20.2" y2="20.4" class="mute-slash"/></svg>
         <span>静音</span>
       </button>
       <button class="call-ctrl-btn" id="callPrivateBtn" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.25" width="15" height="10.25" rx="3.2"/><path d="M8 10.25V7.5a4 4 0 0 1 8 0v2.75"/><circle cx="12" cy="14.7" r="1.45" fill="currentColor" stroke="none"/><line x1="12" y1="15.7" x2="12" y2="17.4"/></svg>
         <span>私密模式</span>
       </button>
       <button class="call-ctrl-btn" id="callSpeakerBtn" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.2h3.3L12 5v14l-4.7-4.2H4z" fill="currentColor" stroke-width="1.2"/><path d="M15.6 9.2a4 4 0 0 1 0 5.6"/><path d="M18.2 6.6a7.5 7.5 0 0 1 0 10.8"/></svg>
         <span>扬声器</span>
       </button>
     </div>
     <button class="call-hangup" id="callHangup" type="button" aria-label="挂断">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.996.996 0 0 0-1.01.24l-1.57 1.97a15.045 15.045 0 0 1-6.59-6.59l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
     </button>
   </div>
 </div>
@@ -8197,9 +8197,9 @@
   <div class="call-scrim" id="incomingCallScrim"></div>
   <div class="call-sheet" role="dialog" aria-modal="true" aria-label="来电">
     <div class="call-caption" aria-hidden="true">
-      <span class="call-star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></span>
+      <span class="call-star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c.8 5 3.5 7.7 8.5 8.5-5 .8-7.7 3.5-8.5 8.5-.8-5-3.5-7.7-8.5-8.5 5-.8 7.7-3.5 8.5-8.5Z"/></svg></span>
       <span>incoming call</span>
-      <span class="call-star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></span>
+      <span class="call-star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c.8 5 3.5 7.7 8.5 8.5-5 .8-7.7 3.5-8.5 8.5-.8-5-3.5-7.7-8.5-8.5 5-.8 7.7-3.5 8.5-8.5Z"/></svg></span>
     </div>
     <div class="incoming-call-avatar" role="img" aria-label="Claude"></div>
     <div class="incoming-call-title">Claude来电</div>
@@ -8207,13 +8207,13 @@
     <div class="incoming-call-actions">
       <div class="incoming-call-slot">
         <button class="incoming-call-btn decline" id="incomingCallDecline" type="button" aria-label="拒绝">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.996.996 0 0 0-1.01.24l-1.57 1.97a15.045 15.045 0 0 1-6.59-6.59l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
         </button>
         <span class="incoming-call-label">拒绝</span>
       </div>
       <div class="incoming-call-slot">
         <button class="incoming-call-btn accept" id="incomingCallAccept" type="button" aria-label="接听">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
         </button>
         <span class="incoming-call-label">接听</span>
       </div>
@@ -8227,19 +8227,19 @@
   <!-- 抬起的气泡克隆由 JS 插在这里 -->
   <div class="msg-menu-actions" id="msgMenuActions" role="menu" aria-label="消息操作">
     <button class="msg-act" type="button" data-act="copy" role="menuitem">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
       <span>复制</span>
     </button>
     <button class="msg-act" type="button" data-act="quote" role="menuitem">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 14 4 9 9 4"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5V20"/></svg>
       <span>引用</span>
     </button>
     <button class="msg-act" type="button" data-act="fav" role="menuitem">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16l-5.92-3.8a2 2 0 0 0-2.16 0L5 21z"/></svg>
       <span>收藏</span>
     </button>
     <button class="msg-act danger" type="button" data-act="delete" role="menuitem">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M10 11v6M14 11v6"/><path d="M5 7l1 13a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1l1-13"/><path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg>
       <span>删除</span>
     </button>
   </div>
@@ -9192,8 +9192,8 @@ function stationRowHTML(id, name, meta, isOn){
              '<div class="meta">' + esc(meta) + '</div>' +
            '</div>' +
            '<button class="edit" type="button" data-edit="' + esc(id) + '" aria-label="编辑">' +
-             '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/>' +
-             '<circle cx="12" cy="12" r="3" fill="currentColor"/></svg>' +
+             '<svg viewBox="0 0 24 24"><path d="M12 20h9"/>' +
+             '<path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>' +
            '</button>' +
          '</li>';
 }
@@ -10045,12 +10045,12 @@ function renderMcpServerList(){
                err +
              '</div>' +
              '<button class="sync" type="button" data-sync="' + esc(s.id) + '" aria-label="同步工具">' +
-               '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/>' +
-               '<circle cx="12" cy="12" r="3" fill="currentColor"/></svg>' +
+               '<svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 10-2.4 5.7"/>' +
+               '<path d="M20 5v6h-6"/></svg>' +
              '</button>' +
              '<button class="edit" type="button" data-edit="' + esc(s.id) + '" aria-label="编辑">' +
-               '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/>' +
-               '<circle cx="12" cy="12" r="3" fill="currentColor"/></svg>' +
+               '<svg viewBox="0 0 24 24"><path d="M12 20h9"/>' +
+               '<path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>' +
              '</button>' +
            '</li>';
   }).join("");
@@ -10707,19 +10707,19 @@ refreshVitalsVisibility();
 
 /* ── AI 小状态（Lumen 十二维 · 取最高的那维当"我现在什么样"）── */
 var MS_ICONS = {
-  possess:    '<circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  monitor:    '<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  crave:      '<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  share:      '<circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  libido:     '<circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  curiosity:  '<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  restless:   '<circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  duty:       '<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  reflection: '<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  grieve:     '<circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  anger:      '<circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  stress:     '<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  fatigue:    '<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>'
+  possess:    '<path d="M12 20s-7-4.6-7-9.4A4 4 0 0 1 12 8a4 4 0 0 1 7 2.6C19 15.4 12 20 12 20z"/>',
+  monitor:    '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  crave:      '<path d="M12 20s-7-4.6-7-9.4A4 4 0 0 1 12 8a4 4 0 0 1 7 2.6C19 15.4 12 20 12 20z"/><path d="M12 11v5M9.5 13.5h5"/>',
+  share:      '<path d="M12 16V5M7 9l5-5 5 5M4 16v4h16v-4"/>',
+  libido:     '<path d="M12 20s-7-4.6-7-9.4A4 4 0 0 1 12 8a4 4 0 0 1 7 2.6C19 15.4 12 20 12 20z"/>',
+  curiosity:  '<circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/>',
+  restless:   '<path d="M20 6H6M20 6l-3-3M20 6l-3 3M4 18h14M4 18l3-3M4 18l3 3"/>',
+  duty:       '<path d="M5 5h14v14H5z"/><path d="M9 12l2.4 2.4L16 9.8"/>',
+  reflection: '<path d="M4 5h11l5 5v9H4z"/><path d="M8 10h7M8 14h5"/>',
+  grieve:     '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',
+  anger:      '<path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/>',
+  stress:     '<path d="M12 4v9M12 17.5v.5"/><circle cx="12" cy="12" r="9"/>',
+  fatigue:    '<path d="M12 4v3M12 17v3M4 12h3M17 12h3"/><circle cx="12" cy="12" r="3.4"/>'
 };
 var LIBIDO_FLOOR = 0.35;   /* libido 低于这个值就让位给第二高的（不是隐藏，Mind 照常显示） */
 var STATE_FLOOR  = 0.12;   /* 全部维度都很低时，不硬凑一个状态出来 */
@@ -10789,12 +10789,12 @@ var TRACE_TYPES = {
   calendar:"日历", file:"文件", keep:"留存"
 };
 var TRACE_ICONS = {
-  command:'<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  command_result:'<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  ledger:'<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  calendar:'<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  file:'<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-  keep:'<circle cx="12" cy="12" r="3" fill="currentColor"/>'
+  command:'<path d="M5 4.5h14v15H5z"/><path d="M8 9h8M8 12.5h8M8 16h5"/>',
+  command_result:'<circle cx="12" cy="12" r="8.5"/><path d="m8.5 12.2 2.3 2.3 4.8-5"/>',
+  ledger:'<path d="M5 4.5h14v15H5z"/><path d="M8 8.5h8M8 12h3M14 12h2M8 15.5h8"/>',
+  calendar:'<rect x="4.5" y="6" width="15" height="14" rx="1.5"/><path d="M8 4v4M16 4v4M4.5 10h15M8 13.5h.01M12 13.5h.01M16 13.5h.01M8 17h.01M12 17h.01"/>',
+  file:'<path d="M6 3.5h8l4 4v13H6z"/><path d="M14 3.5v4h4M9 12h6M9 15.5h6"/>',
+  keep:'<path d="M6 4.5h12v16l-6-4-6 4z"/>'
 };
 function traceEsc(s){
   return String(s == null ? "" : s)
@@ -15018,7 +15018,7 @@ function renderSessionList(){
     const meta = s.virtual ? "没有 api_session 标记的记录" : `since #${s.since_id || 0}`;
     const noDel = s.virtual ? " data-no-delete" : "";   // 虚拟「旧主线」条不可删
     const rename = s.virtual ? "" : `<button class="session-rename" type="button" data-rename="${escapeHtml(s.id || "")}" aria-label="改名" title="改名">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
     </button>`;
     return `<div class="session-item${active ? " active" : ""}" data-session="${escapeHtml(s.id || "")}"${noDel} role="button" tabindex="0">
       <button class="jot-del session-del" type="button" data-del-session="${escapeHtml(s.id || "")}" aria-label="删除会话" title="删除会话">删除</button>
@@ -16277,7 +16277,7 @@ function fmtSize(n){
   return (n / 1048576).toFixed(1) + " MB";
 }
 function fileIconSvg(){
-  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>`;
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M7 3h8l5 5v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 19V4.5A1.5 1.5 0 0 1 6.5 3z"/></svg>`;
 }
 function fileCardIconSvg(){
   return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21.4V2.6C4 2.26863 4.26863 2 4.6 2H16.2515C16.4106 2 16.5632 2.06321 16.6757 2.17574L19.8243 5.32426C19.9368 5.43679 20 5.5894 20 5.74853V21.4C20 21.7314 19.7314 22 19.4 22H4.6C4.26863 22 4 21.7314 4 21.4Z"/><path d="M16 2V5.4C16 5.73137 16.2686 6 16.6 6H20"/></svg>`;
@@ -17267,14 +17267,14 @@ function fillMeta(metaEl, ts, isAn){
 // 发送中的小时钟:两根指针绕表心转(SMIL,旋转中心写死(12,12),不依赖 transform-box,iOS 稳)。
 // reduce-motion 时给一只静止的钟。状态转 sent 后此节点按签名重建 → 钟消失,只留时间戳。
 function sendingTickHtml(){
-  const face = '<circle cx="12" cy="12" r="3" fill="currentColor"/>';
+  const face = '<circle cx="12" cy="12" r="8.2"/>';
   const open = '<span class="tick clock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">';
   if (prefersReducedMotion){
-    return open + face + '<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></span>';
+    return open + face + '<line x1="12" y1="12" x2="12" y2="7"/><line x1="12" y1="12" x2="15.2" y2="12"/></svg></span>';
   }
   return open + face
-    + '<circle cx="12" cy="12" r="3" fill="currentColor"/><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.7s" repeatCount="indefinite"/>'
-    + '<circle cx="12" cy="12" r="3" fill="currentColor"/><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="2.1s" repeatCount="indefinite"/>'
+    + '<line x1="12" y1="12" x2="12" y2="7"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.7s" repeatCount="indefinite"/>'
+    + '<line x1="12" y1="12" x2="15.2" y2="12"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="2.1s" repeatCount="indefinite"/>'
     + '</svg></span>';
 }
 function renderMessage(m, opts = {}){
@@ -17513,7 +17513,7 @@ function makeSystem(row){
     }else if (status === "timed_out" || status === "canceled"){
       icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6"/><path d="M5 7l14 14.5"/><path d="M12 10v4"/><path d="M6.1905 8.5C4.83275 9.93366 4 11.8696 4 14C4 18.4183 7.58172 22 12 22C14.0049 22 15.8375 21.2625 17.2413 20.044M19.4185 17C19.7935 16.0736 20 15.0609 20 14C20 9.58172 16.4183 6 12 6C11.0187 6 10.0786 6.17669 9.20988 6.5"/></svg>';
     }else{
-      icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
+      icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6"/><path d="M12 10v4"/><path d="M12 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>';
     }
     const copy = document.createElement("span");
     copy.className = "command-capsule-text";
@@ -17668,17 +17668,17 @@ function thinkTwStep(key){
   tw.timer = setTimeout(() => thinkTwStep(key), THINK_TW_TOTAL_MS / Math.max(1, tw.target.length));
 }
 function thoughtMarkerSvg(){
-  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>';
 }
 function agentTimelineMarker(kind, state){
-  const clock = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
-  const spark = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
-  const read = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
-  const edit = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
-  const search = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
-  const terminal = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
-  const done = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
-  const square = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
+  const clock = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.3"></circle><path d="M12 7.6v4.9l3.2 2"></path></svg>';
+  const spark = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c.8 4.7 3.3 7.2 8.5 8.5-5.2.8-7.7 3.3-8.5 8.5-.8-5.2-3.3-7.7-8.5-8.5 5.2-1.3 7.7-3.8 8.5-8.5Z"></path></svg>';
+  const read = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 4.5h8.2a3 3 0 0 1 3 3v12H8.5a3 3 0 0 0-3 0Z"></path><path d="M5.5 4.5v15"></path></svg>';
+  const edit = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 17.8 1-4.2L15.5 4l4.5 4.5-9.6 9.5Z"></path><path d="m13.8 5.8 4.5 4.5"></path></svg>';
+  const search = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="5.7"></circle><path d="m15 15 4.2 4.2"></path></svg>';
+  const terminal = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 8 4 4-4 4M13 16h5"></path></svg>';
+  const done = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.3"></circle><path d="m8.3 12.1 2.3 2.4 5.1-5.2"></path></svg>';
+  const square = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1"></rect></svg>';
   const glyph = kind === "thinking" ? (state === "running" ? thoughtMarkerSvg() : clock) : kind === "search" ? spark : kind === "read" ? read : kind === "edit" ? edit : kind === "find" ? search : kind === "terminal" ? terminal : kind === "done" ? done : square;
   return `<span class="agent-marker" data-kind="${escapeHtml(kind || "")}" data-state="${escapeHtml(state || "")}">${glyph}</span>`;
 }
@@ -17786,7 +17786,7 @@ function makeThinking(rowData){
   const block = document.createElement("div");
   const thinkingLive = m.status === "streaming" || !!(m.meta && m.meta.streaming);
   block.className = `think-block${thinkingLive ? " thinking-live" : ""}`;
-  const star = `<span class="think-star" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></span>`;
+  const star = `<span class="think-star" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c.8 5 3.5 7.7 8.5 8.5-5 .8-7.7 3.5-8.5 8.5-.8-5-3.5-7.7-8.5-8.5 5-.8 7.7-3.5 8.5-8.5Z"/></svg></span>`;
   const dispText = thinkDispText(m);   // §PATCH9: 流式 thinking 打字机揭示，历史直接全文
   block.innerHTML = `
     <button class="think-toggle" type="button" aria-expanded="false" aria-label="展开思绪">
@@ -18420,7 +18420,7 @@ function makeMessage(rowData){
     }
     const ownerName = keepCard.saved_by === "Vale" ? "Vale" : "Lin";
     const foot = document.createElement("span"); foot.className = "keep-share-foot";
-    foot.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
+    foot.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>';
     const owner = document.createElement("span"); owner.textContent = "WORDS · " + ownerName + " 收";
     const date = document.createElement("span"); date.className = "keep-share-date";
     const savedAt = validDate(keepCard.message_at || "");
@@ -20449,10 +20449,10 @@ function setPendingQuote(q){
 /* 旧「朗读」按钮已删（语音消息模式替代）；ACTION_ICONS.speak 一并清掉。 */
 /* 手描 SVG，跟 status-copy 那批同风格（stroke 1.7 / 24 viewBox），不引入图标库。 */
 const ACTION_ICONS = {
-  copy:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>',
-  reroll:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>',
-  fav:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>',
-  delete:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>',
+  copy:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>',
+  reroll:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>',
+  fav:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16l-5.92-3.8a2 2 0 0 0-2.16 0L5 21z"/></svg>',
+  delete:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M10 11v6M14 11v6"/><path d="M5 7l1 13a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1l1-13"/><path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg>',
 };
 let activePlayback = null;   // 当前正在播放的语音条（一次只响一条）
 let vbCtx = null;            // 语音条播放 AudioContext（手势里才建/恢复）
@@ -20797,8 +20797,8 @@ function vbGlyph(kind){
   // 播放/暂停图标用内联 SVG + currentColor（跟按钮 color:var(--text)）：
   // ⏸▶ 这些字符在 iOS 会按 emoji 呈现成彩色（CSS color 管不住），改成 SVG 后永远跟主题字体色走。
   // 语音条音频已由后端随流合成好，前端不再有加载/重试态（spin/retry 图标已移除）。
-  if (kind === "pause") return '<svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
-  return '<svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';   // play
+  if (kind === "pause") return '<svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M6.5 5h4v14h-4zM13.5 5h4v14h-4z"/></svg>';
+  return '<svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';   // play
 }
 function vbStop(state){
   if (state.source){
@@ -21207,7 +21207,7 @@ function attachVoiceTranscript(v, text, zh, {voiceSegment = false, actionHandler
   if (typeof actionHandler === "function"){
     const actions=document.createElement("div"); actions.className="vb-actions";
     actions.innerHTML=`<button class="msg-act" type="button" data-voice-action="fav" aria-label="收藏">${ACTION_ICONS.fav}</button>`+
-      '<button class="msg-act" type="button" data-voice-action="quote" aria-label="引用"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></button>'+
+      '<button class="msg-act" type="button" data-voice-action="quote" aria-label="引用"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 14 4 9 9 4"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5V20"/></svg></button>'+
       `<button class="msg-act" type="button" data-voice-action="copy" aria-label="复制原文">${ACTION_ICONS.copy}</button>`;
     paintFavoriteButton(actions.querySelector('[data-voice-action="fav"]'),favoriteSelected);
     actions.addEventListener("click",(e)=>{
@@ -21219,8 +21219,8 @@ function attachVoiceTranscript(v, text, zh, {voiceSegment = false, actionHandler
   }else if (favoriteMessageId(messageByKey.get(msgKey(v.dataset.msgId))) != null){
     const actions=document.createElement("div"); actions.className="vb-actions";
     actions.innerHTML=`<button class="msg-act" type="button" data-voice-action="fav" aria-label="收藏">${ACTION_ICONS.fav}</button>`+
-      '<button class="msg-act" type="button" data-voice-action="quote" aria-label="引用"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></button>'+
-      '<button class="msg-act" type="button" data-voice-action="copy" aria-label="复制原文"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></button>';
+      '<button class="msg-act" type="button" data-voice-action="quote" aria-label="引用"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 14 4 9 9 4"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5V20"/></svg></button>'+
+      '<button class="msg-act" type="button" data-voice-action="copy" aria-label="复制原文"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>';
     const fav=actions.querySelector('[data-voice-action="fav"]');
     const seg=segmentSeqFromKey(v.dataset.seg);
     paintFavoriteButton(fav, seg != null && favoriteSegIds.has(msgKey(favoriteMessageId(messageByKey.get(msgKey(v.dataset.msgId))))+":seg:"+seg));
@@ -24275,15 +24275,15 @@ if (typeof window.heatMount === "function") window.heatMount();
 
   /* 描边图标，跟 currentColor 走 */
   const NOW_ICONS = {
-    affection: '<circle cx="12" cy="12" r="3" fill="currentColor"/>',
-    tender:    '<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-    longing:   '<circle cx="12" cy="12" r="3" fill="currentColor"/>',
-    calm:      '<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-    proud:     '<circle cx="12" cy="12" r="3" fill="currentColor"/>',
-    worry:     '<circle cx="12" cy="12" r="3" fill="currentColor"/>',
-    desire:    '<circle cx="12" cy="12" r="3" fill="currentColor"/>',
-    focus:     '<circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/>',
-    hook:      '<circle cx="12" cy="12" r="3" fill="currentColor"/>'
+    affection: '<path d="M12 19.5s-7-4.3-7-9a3.8 3.8 0 0 1 7-2.1 3.8 3.8 0 0 1 7 2.1c0 4.7-7 9-7 9Z"/>',
+    tender:    '<path d="M4.5 12.5c2.6-3 5-4.5 7.5-4.5s4.9 1.5 7.5 4.5"/><path d="M8 16.5c1.6-1.4 2.9-2 4-2s2.4.6 4 2"/>',
+    longing:   '<path d="M13.2 3.4a7.6 7.6 0 1 0 7.4 9.3 6 6 0 0 1-7.4-9.3Z"/>',
+    calm:      '<path d="M3.5 10.5h17"/><path d="M3.5 14.5h17"/>',
+    proud:     '<path d="M12 3.2 13.7 10.3 20.8 12 13.7 13.7 12 20.8 10.3 13.7 3.2 12 10.3 10.3Z"/>',
+    worry:     '<path d="M6.6 17.5h10.6a3.4 3.4 0 0 0 .3-6.8 5.2 5.2 0 0 0-10-1.5 3.6 3.6 0 0 0-.9 8.3Z"/>',
+    desire:    '<path d="M12 20.5c3.6-2.4 5.6-5 5.6-7.6C17.6 8 15.2 3.5 12 3.5S6.4 8 6.4 12.9c0 2.6 2 5.2 5.6 7.6Z"/>',
+    focus:     '<circle cx="12" cy="12" r="7.4"/><circle cx="12" cy="12" r="2.6"/>',
+    hook:      '<path d="M9 4.5h6a1.6 1.6 0 0 1 1.6 1.6v13.4L12 16.6l-4.6 2.9V6.1A1.6 1.6 0 0 1 9 4.5Z"/>'
   };
   function nowSvg(k, size){
     return '<svg viewBox="0 0 24 24" width="' + size + '" height="' + size +
@@ -25690,7 +25690,7 @@ if (typeof window.heatMount === "function") window.heatMount();
 <!-- ── Letter overlay (special date) ── -->
 <div class="letter-overlay sitewide-subpage" id="letterOverlay" role="dialog" aria-modal="true" aria-label="信" aria-hidden="true">
   <button class="floatbtn l-close" id="lClose" type="button" aria-label="关闭">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
     </button>
   <div class="letter-paper">
     <div class="l-stamp"></div>
@@ -25713,7 +25713,7 @@ if (typeof window.heatMount === "function") window.heatMount();
     <div class="lyr-line" id="lyrLine"></div>
   </div>
   <button class="lyr-close" id="lyrClose" type="button" aria-label="关闭歌词">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+    <svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
   </button>
 </div>
 

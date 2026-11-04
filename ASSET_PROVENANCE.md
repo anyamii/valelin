@@ -51,8 +51,10 @@ comparison releases; this is not a claim that a source lockfile identified them.
 Comparison normalizes absolute/relative SVG path commands, numeric spelling,
 line direction and polyline syntax, retaining all segments and coordinates.
 No fuzzy image similarity or approximate coordinate matching was used.
-Original SVG markup is retained for accepted groups. Unknown drawings stay
-replaced by the public edition's elementary placeholders.
+Original SVG markup, JavaScript drawing fragments and data URI bytes are retained
+for accepted groups. Icons come from Iconoir (MIT, © Luca Burgio); some have
+been modified. The attribution of unmatched icon geometry to Iconoir follows
+the source owner's confirmation, rather than a claim of exact upstream identity.
 
 | Library / icon | Restored occurrences |
 |---|---:|
@@ -81,10 +83,29 @@ replaced by the public edition's elementary placeholders.
 | phosphor: `assets/light/plus-light.svg` | 2 |
 | phosphor: `assets/light/terminal-light.svg` | 2 |
 
-128 unmatched source groups/fragments/data URIs remain excluded. This count
-includes drawings that may be custom or modified, rather than asserting that
-all were library icons. The newly authored neutral application icon and letter
-avatars remain unchanged. The absent MP3 is not covered by these licenses.
+Of the 128 previously unmatched occurrences, 123 are restored as **derived from
+Iconoir (possibly modified)**. Full geometry comparison against Iconoir 6.11.0,
+5.5.2 and 4.9.2 added no exact matches, so no icon name or original version is
+inferred for these derivatives. These comparison versions are not source
+lockfile evidence. Counts include repeated instances, not only distinct shapes.
+
+| Classification | Restored occurrences |
+|---|---:|
+| Iconoir 7.12.1, full geometry match | 23 |
+| Iconoir 6.11.0, newly matched | 0 |
+| Iconoir 5.5.2, newly matched | 0 |
+| Iconoir 4.9.2, newly matched | 0 |
+| Derived from Iconoir (possibly modified), no full geometry match | 123 |
+| Phosphor core 2.1.1, standalone copies | 22 |
+
+Five source occurrences remain excluded pending review: the complex filled cat
+face illustration; two fractal-noise paper textures; and the text-bearing
+cycle-ring SVG with its separate dynamic dot fragment (two audit occurrences).
+Their existing placeholders are retained. Generic smiley UI symbols are icons,
+not personal face avatars. The neutral application icon and letter avatars
+remain unchanged. The absent MP3 is not covered by these licenses.
 
 Sources: [Iconoir 7.12.1](https://www.npmjs.com/package/iconoir/v/7.12.1),
 [Phosphor core 2.1.1](https://www.npmjs.com/package/@phosphor-icons/core/v/2.1.1).
+
+Older comparison releases: [6.11.0](https://www.npmjs.com/package/iconoir/v/6.11.0), [5.5.2](https://www.npmjs.com/package/iconoir/v/5.5.2), [4.9.2](https://www.npmjs.com/package/iconoir/v/4.9.2).
