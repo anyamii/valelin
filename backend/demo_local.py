@@ -29,6 +29,10 @@ def seed():
         for mid in mids[:3]:save_keep(c,mid)
         stamp=a.now_iso();day=datetime.now().strftime('%Y-%m-%d')
         docs={'valelin_notes':{day:[{'id':'seed-review','t':'复习 Python 与项目回顾','author':'user','ts':int(time.time()*1000),'done':False}],(datetime.now()+timedelta(days=1)).strftime('%Y-%m-%d'):[{'id':'seed-code','t':'做一个小型代码练习','author':'user','ts':int(time.time()*1000),'done':False}],(datetime.now()+timedelta(days=3)).strftime('%Y-%m-%d'):[{'id':'seed-plan','t':'整理下周学习计划','author':'user','ts':int(time.time()*1000),'done':False}]},'valelin_anniv':[{'id':'new-year','date':'2026-01-01','name':'元旦','yearly':True},{'id':'spring','date':'2026-02-17','name':'春节','yearly':True},{'id':'valentine','date':'2026-02-14','name':'情人节','yearly':True},{'id':'midautumn','date':'2026-09-25','name':'中秋节','yearly':True}]}
+        # Synthetic cycle fixture: relative dates, never copied from personal records.
+        docs['valelin_period'] = {'cycle':28,'len':5,'manual':False,'logs':[
+            {'start':(datetime.now()-timedelta(days=2)).strftime('%Y-%m-%d'),'end':None}
+        ]}
         for key,data in docs.items():c.execute('INSERT OR REPLACE INTO daily_documents VALUES (?,?,?)',(key,json.dumps(data,ensure_ascii=False),stamp))
         c.execute("INSERT INTO letters(id,text,title,created_at,deliver_at,status,author,delivered_at,read_at) VALUES (?,?,?,?,?,'read','Vale',?,?)",('welcome','每次把目标缩小一点，就能更清楚地看到进展。','给正在学习的你',stamp,stamp,stamp,stamp))
 

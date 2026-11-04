@@ -4,8 +4,6 @@
  document.querySelectorAll('#viewSeg button').forEach(x=>{if(!['brain','mind'].includes(x.dataset.v))x.remove();});
  document.querySelectorAll('#sitesViewSeg button').forEach(x=>{if(x.dataset.v!=='chat')x.remove();});
  document.querySelectorAll('#sitesViewMood,#moodEditView').forEach(x=>x.remove());
- document.querySelectorAll('#pdRing,#cardHist').forEach(x=>{const card=x.closest('.pd-card');if(card)card.remove();else x.remove();});
- document.querySelectorAll('[data-seg="period"],[data-pane="period"]').forEach(x=>x.remove());
  const b=$('[data-ledger-action="ledger"] span');if(b)b.textContent='番茄钟';
  const workButton=$('[data-ledger-action="window"]');workButton.querySelector('span').textContent='工作窗';
  const sheets=[];

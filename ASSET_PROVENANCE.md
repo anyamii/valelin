@@ -98,10 +98,13 @@ lockfile evidence. Counts include repeated instances, not only distinct shapes.
 | Derived from Iconoir (possibly modified), no full geometry match | 123 |
 | Phosphor core 2.1.1, standalone copies | 22 |
 
-Five source occurrences remain excluded pending review: the complex filled cat
-face illustration; two fractal-noise paper textures; and the text-bearing
-cycle-ring SVG with its separate dynamic dot fragment (two audit occurrences).
-Their existing placeholders are retained. Generic smiley UI symbols are icons,
+The five previously excluded source occurrences are now restored: the author's
+cat face, two code-generated fractal-noise paper textures, and the runtime
+cycle-ring SVG with its dynamic dot fragment. These five are project assets,
+not additional Iconoir derivatives. 猫脸图形为项目作者自绘，随仓库采用 MIT 许可。
+The cycle ring renders synthetic demo data in the public edition;
+no personal dates or records are bundled with these restored fragments.
+Generic smiley UI symbols are icons,
 not personal face avatars. The neutral application icon and letter avatars
 remain unchanged. The absent MP3 is not covered by these licenses.
 

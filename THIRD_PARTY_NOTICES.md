@@ -25,8 +25,9 @@ Icons come from Iconoir (MIT, © Luca Burgio); some have been modified.
 occurrences are distributed as derived from Iconoir (possibly modified), based
 on the source owner's confirmation. Comparison with Iconoir 6.11.0, 5.5.2 and
 4.9.2 yielded 0 additional complete matches for each version. 22 standalone
-copies match Phosphor core 2.1.1. Five non-icon/text-bearing occurrences remain
-excluded pending review; their placeholders remain. See ASSET_PROVENANCE.md
+copies match Phosphor core 2.1.1. The five previously excluded project assets (author-drawn cat face, two
+code-generated paper textures, cycle ring and dynamic dots) are restored
+under the project MIT license. See ASSET_PROVENANCE.md
 for counting rules and exceptions. The neutral application
 icon and letter avatars are authored for the public edition under the project
 MIT license. The MP3 is excluded; the voice scene uses its transcript.
