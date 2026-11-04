@@ -11,11 +11,11 @@
 :root[data-theme="warm"]{--outer:#e9ded4;--ink:#806958;--rim:#fff3e5}
 *{box-sizing:border-box}body{margin:0;background:var(--outer);color:var(--ink);font:12px system-ui,sans-serif;transition:background .2s}
 main{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px}
-#phone{width:390px;height:min(844px,calc(100dvh - 64px));max-width:calc(100vw - 32px);border:6px solid var(--rim);box-sizing:content-box;border-radius:32px;overflow:hidden;box-shadow:0 14px 48px #0002;background:var(--rim)}
-iframe{display:block;width:100%;height:100%;border:0;border-radius:25px}p{margin:0;letter-spacing:.08em}
+#phone{width:390px;height:min(844px,calc(100dvh - 90px));max-width:calc(100vw - 32px);border:6px solid var(--rim);box-sizing:content-box;border-radius:32px;overflow:hidden;box-shadow:0 14px 48px #0002;background:var(--rim)}
+iframe{display:block;width:100%;height:100%;border:0;border-radius:25px}p{margin:0;letter-spacing:.08em;text-align:center;line-height:1.6}
 </style>
 </head>
-<body><main><div id="phone"><iframe title="Valelin 手机界面" allow="microphone; clipboard-write"></iframe></div><p>为手机设计 · 用手机打开体验更好</p></main>
+<body><main><div id="phone"><iframe title="Valelin 手机界面" allow="microphone; clipboard-write"></iframe></div><p><span id="demoNotice">预设剧本回放演示</span><br>为手机设计 · 用手机打开体验更好</p></main>
 <script>
 (() => {
   const fallback = new URL('index.html', location.href);
@@ -37,6 +37,7 @@ iframe{display:block;width:100%;height:100%;border:0;border-radius:25px}p{margin
   frame.addEventListener('load', () => {
     const doc = frame.contentDocument;
     if (!doc) return;
+    doc.querySelector('#demoNotice')?.remove();
     const sync = () => { document.documentElement.dataset.theme = doc.documentElement.dataset.theme || ''; };
     sync();
     new MutationObserver(sync).observe(doc.documentElement, {attributes:true,attributeFilter:['data-theme']});

@@ -25,8 +25,8 @@ for name in files:
    if rel in {'study.html','study-note.html'}:s=s.replace('href="/"','href="index.html"')
    if rel in {'index.html','study.html','study-note.html'}:
     s=s.replace('<head>',"<head>\n<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self' data: blob:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self'; worker-src 'none'; object-src 'none'\">\n<script src=\"pages-replay.js\"></script>",1)
-    # Visible across every main tab, outside the original fixed tab bar.
-    s=s.replace('</body>','<p id="pagesNotice" style="position:fixed;top:2px;left:0;right:0;text-align:center;font:10px sans-serif;opacity:.72;z-index:100;pointer-events:none">预设剧本回放演示，不连接任何模型或服务器</p></body>')
+   if rel in {'index.html','desktop-frame.html'}:
+    s=s.replace('预设剧本回放演示</', '预设剧本回放演示，不连接任何模型或服务器</')
   data=s.encode()
  dest.write_bytes(data)
 scenes=json.loads((root/'backend/scenes.json').read_text())
