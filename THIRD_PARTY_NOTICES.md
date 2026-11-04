@@ -1,21 +1,80 @@
 # Third-party notices and asset boundaries
 
-The existing MIT copyright notice in LICENSE is retained for the source code.
-Python dependencies are installed from requirements.txt; their own licenses apply,
-and their packages are not vendored in this repository.
+The existing source-code MIT copyright in LICENSE is retained. Python packages
+installed from requirements.txt retain their own licenses and are not vendored.
 
-No original bundled fonts, standalone SVG assets, recordings or raster images are
-redistributed in this edition. Filenames alone do not establish provenance.
-The source directory contains some adjacent OFL and Phosphor MIT license files,
-but the large asset collection has not been independently matched to its upstream
-releases. Those assets remain excluded until that review is complete.
+Bundled fonts are SIL OFL 1.1, with one complete upstream license per family in
+[static/fonts/LICENSES](static/fonts/LICENSES). Versions, counts, comparison
+results and Reserved Font Name review are in [ASSET_PROVENANCE.md](ASSET_PROVENANCE.md).
+The license headers and original font name tables retain their attributions:
 
-System fonts are used instead. Inline SVG drawing primitives have been replaced
-with simple circles authored for this edition; the application icon and two neutral
-letter avatars are newly authored elementary SVG geometry under the project MIT
-license. These SVG files contain no metadata elements, embedded images or EXIF.
-The voice scene uses its text transcript because no recording is distributed.
+- **LXGW WenKai**: Copyright 2021-2023 LXGW (https://github.com/lxgw/LxgwWenKai); Copyright 2020 The Klee Project Authors (https://github.com/fontworks-fonts/Klee)
+- **LXGW WenKai Mono**: Copyright 2021-2023 LXGW (https://github.com/lxgw/LxgwWenKai); Copyright 2020 The Klee Project Authors (https://github.com/fontworks-fonts/Klee)
+- **Noto Serif SC**: (c) 2017-2024 Adobe (http://www.adobe.com/).
+- **Cormorant Garamond**: Copyright 2015 The Cormorant Project Authors (github.com/CatharsisFonts/Cormorant)
+- **Montserrat**: Copyright 2011 The Montserrat Project Authors (https://github.com/JulietaUla/Montserrat)
+- **Courier Prime**: Copyright 2015 The Courier Prime Project Authors (https://github.com/quoteunquoteapps/CourierPrime).
+- **Pinyon Script**: Copyright 2022 The PinyonScript Project Authors (https://github.com/SorkinType/Pinyon)
 
-The interface, original code structure and visual layout remain credited to
-Companion Channel contributors as stated in LICENSE. No additional ownership of
-excluded third-party artwork or recordings is asserted.
+The Noto license text also credits Google Inc.; the Montserrat license text
+credits the 2024 Montserrat.Git Project Authors. The older embedded copyright
+notices above are preserved, not replaced by those distribution license headers.
+
+Only verified Iconoir/Phosphor drawing groups were restored. Unknown SVG drawing
+geometry is excluded; elementary placeholders remain. The neutral application
+icon and letter avatars are authored for the public edition under the project
+MIT license. The MP3 is excluded; the voice scene uses its transcript.
+The original interface and layout remain credited to Companion Channel
+contributors as stated in LICENSE.
+
+## Iconoir 7.12.1 — MIT
+
+Upstream: https://github.com/iconoir-icons/iconoir
+
+MIT License
+
+Copyright (c) 2021 Luca Burgio
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## Phosphor core 2.1.1 — MIT
+
+Upstream: https://github.com/phosphor-icons/core
+
+MIT License
+
+Copyright (c) 2023 Phosphor Icons
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

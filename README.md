@@ -2,7 +2,7 @@
 
 Valelin is a replay demo of a companion AI interface: streaming responses, approval cards, task dispatch, and memory-writing flows. It runs locally with scripted responses and does not require model credentials. The demo illustrates product interactions, not autonomous tool execution.
 
-陪伴型 AI 前端演示：让人看见流式回复怎样出现、审批卡怎样等待同意、任务怎样从排队走到完成，以及记忆写入怎样反馈。界面、配色与动效继承原项目；首版使用系统字体与中性几何占位图标；演示用户 Lin、助手 Vale。
+陪伴型 AI 前端演示：让人看见流式回复怎样出现、审批卡怎样等待同意、任务怎样从排队走到完成，以及记忆写入怎样反馈。界面、配色与动效继承原项目；已恢复经核验的 OFL 字体及部分 MIT 图标，未核准图形保留中性占位；演示用户 Lin、助手 Vale。
 
 回形针场景菜单提供收藏、审批检查、文件、语音、日历、记忆写入、任务派发等回放；更多菜单的工作窗展示排队、执行与结果摘要。派活为预写剧本，记忆写入为演示存储，不会操作真实工作机，不调用真实模型或外部记忆服务。当前也未接入 memlib。
 
@@ -42,10 +42,10 @@ py -3.12 -m venv .venv
 
 本仓库仅应含代码、中性配置和合成剧本，不含部署环境、访客数据库、附件、日志、备份或账号密钥。每个访客的回放隔离不代表适合承载真实私人数据，推荐本地体验。
 
-自有代码沿用现有 MIT LICENSE 及原版权署名。原字体、独立 SVG 和示例录音均未进入本版；内嵌图标绘制数据已替换为中性几何占位。素材边界见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)，不替原素材权利人重新授权。
+自有代码沿用现有 MIT LICENSE 及原版权署名。已收录经核验的 OFL 字体与 Iconoir / Phosphor MIT 图标；未匹配上游的图形仍使用中性占位，示例录音不分发。素材边界见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)，不替原素材权利人重新授权。
 
 产品目标、演示取舍与验收由 Anya 主导；演示适配、脱敏、回放与相关修复由AI（Codex）实现和验证；原前后端与视觉组件按来源保留署名。
 
 相关离线检索实验：[memlib](https://github.com/OWNER/memlib)（待建仓后替换 OWNER）。memlib 研究何时给出记忆与何时返回空包；两个项目目前独立，互链不代表已完成集成。
 
-公开版已中性化旧界面注释，排除来源未核准的素材；后续恢复原字体、图标或音频前仍须确认来源与许可。
+公开版已中性化旧界面注释，排除来源未核准的素材；字体版本、子集比对与图标匹配范围见 [ASSET_PROVENANCE.md](ASSET_PROVENANCE.md)。
