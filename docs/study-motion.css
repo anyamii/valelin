@@ -1,0 +1,39 @@
+/* Shared preview motion. All animation uses compositor transform/opacity only. */
+:root{--motion-press:120ms;--motion-release:340ms;--motion-duration:500ms;--motion-gap:50ms;--motion-sheet:360ms;--motion-ease:cubic-bezier(.22,1,.36,1);--motion-settle:cubic-bezier(.22,1,.36,1);--motion-scale:.96;--motion-overshoot:1.015;--motion-spring-stiffness:320;--motion-spring-damping:30;--motion-spring-mass:1;}
+.motion-pressed{scale:var(--motion-scale);box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--text) 5%,transparent)!important;}
+.motion-running,.motion-running::before,.motion-running::after{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+.motion-running::before,.motion-running::after,.motion-running .card,.motion-running .card::before,.motion-running .card::after{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;filter:none!important;}
+.motion-sheet-open{animation:none!important;transition:none!important;max-height:min(85dvh,calc(100dvh - var(--vv-bottom-gap,0px)));}
+.motion-sheet-open.keep-sheet{overflow:auto;}
+.motion-sheet-open :is(.handle,.sheet-heading,.detail-heading,.home-today-grip,.subpage-handle,.subpage-top,.keep-sheet-grab,.keep-sheet-head,.thought-sheet-head,.dp-head,.lp-head,#ledgerEditorTitle){touch-action:none;}
+.motion-sheet-open::backdrop{background:color-mix(in srgb,var(--text) 28%,transparent);backdrop-filter:blur(6px);}
+.motion-sheet-open~.keep-overlay-scrim,.motion-scrim{background:color-mix(in srgb,var(--text) 28%,transparent);backdrop-filter:blur(6px);}
+.motion-dragging{will-change:transform;user-select:none;}
+.motion-morph-target{animation:none!important;transition:none!important;}
+html.motion-transition::view-transition-group(motion-element){animation-duration:var(--motion-duration);animation-timing-function:var(--motion-ease);}
+html.motion-transition::view-transition-old(motion-element){animation:motion-fade-out 120ms ease-out both;}
+html.motion-transition::view-transition-new(motion-element){animation:motion-fade-in 200ms ease-out both;}
+html.motion-transition::view-transition-image-pair(motion-element){isolation:normal;}
+html.motion-transition::view-transition-old(motion-element),html.motion-transition::view-transition-new(motion-element){width:100%;height:100%;object-fit:fill;mix-blend-mode:normal;}
+::view-transition-group(root),::view-transition-old(root),::view-transition-new(root){animation:none;}
+::view-transition-old(root){opacity:0;}
+/* Only opt-in morphs use these snapshots; legacy motion-element rules stay intact. */
+html.motion-transition::view-transition-group(motion-element-options){animation-duration:var(--motion-duration);animation-timing-function:var(--motion-ease);}
+html.motion-transition::view-transition-old(motion-element-options){animation:motion-fade-out 120ms ease-out both;}
+html.motion-transition::view-transition-new(motion-element-options){animation:motion-fade-in 200ms ease-out both;}
+html.motion-transition::view-transition-image-pair(motion-element-options){isolation:normal;}
+html.motion-transition::view-transition-old(motion-element-options),html.motion-transition::view-transition-new(motion-element-options){width:100%;height:100%;object-fit:fill;mix-blend-mode:normal;}
+html.motion-morph-cover::view-transition-old(motion-element-options),html.motion-morph-cover::view-transition-new(motion-element-options){object-fit:cover;}
+html.motion-morph-single-new::view-transition-old(motion-element-options),html.motion-morph-single-old::view-transition-new(motion-element-options){animation:none;opacity:0;}
+html.motion-morph-single-new::view-transition-new(motion-element-options),html.motion-morph-single-old::view-transition-old(motion-element-options){animation:none;opacity:1;}
+@keyframes motion-morph{from{transform:translate(var(--motion-from-x),var(--motion-from-y)) scale(var(--motion-from-sx),var(--motion-from-sy));}to{transform:translate(var(--motion-to-x),var(--motion-to-y)) scale(1);}}
+@keyframes motion-fade-out{from{opacity:1;}to{opacity:0;}}
+@keyframes motion-fade-in{from{opacity:0;}to{opacity:1;}}
+@view-transition{navigation:auto;}
+#studyHomeCard,.review-summary{view-transition-name:none;}
+html.motion-cross::view-transition-group(valelin-study){animation-duration:var(--motion-cross,800ms);animation-timing-function:var(--motion-ease);}
+html.motion-cross::view-transition-old(valelin-study){animation:motion-fade-out var(--motion-cross,800ms) ease-out both;}
+html.motion-cross::view-transition-new(valelin-study){animation:motion-fade-in var(--motion-cross,800ms) ease-out both;}
+::view-transition-old(valelin-study),::view-transition-new(valelin-study){width:100%;height:100%;object-fit:fill;mix-blend-mode:normal;}
+@media(prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important;}}
+@media(prefers-reduced-motion:reduce){.motion-pressed{box-shadow:none!important;}}

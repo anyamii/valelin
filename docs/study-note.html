@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self'; worker-src 'none'; object-src 'none'">
+<script src="pages-replay.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>NOTES · Valelin</title>
+  <link rel="icon" href="icon.svg">
+  <link rel="stylesheet" href="study-card-base.css">
+  <link rel="stylesheet" href="study.css">
+  <link rel="stylesheet" href="study-card-border.css">
+  <link rel="stylesheet" href="study-card-material.css">
+  <link rel="stylesheet" href="study-layout.css?v=motion1015">
+  <link rel="stylesheet" href="study-motion.css?v=20261015-plus">
+  <link rel="stylesheet" href="study-notes.css?v=20261022">
+  <script src="study-motion.js?v=20261015-sheet"></script>
+  <script src="study-appearance.js" defer></script>
+  <script src="study-notes.js?v=20261023" defer></script>
+<script src="demo-setup.js?v=valelin-1"></script>
+</head>
+<body id="studyRoom" class="study notes-reader">
+  <div class="study-wall" aria-hidden="true"><img id="studyWallImage" alt=""><div class="study-wall-dim"></div></div>
+  <header class="study-header">
+    <a id="notesBack" class="card icon-button" href="study.html" aria-label="Back to NOTES"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></a>
+    <h1>NOTES</h1>
+  </header>
+  <main>
+    <p id="appearanceNotice" class="hint" role="status"></p>
+    <div class="note-heading"><h2 id="noteTitle"></h2><p id="noteModified" class="hint"></p></div>
+    <p id="noteStatus" class="notice" role="status" aria-live="polite"></p>
+    <article id="noteBody" class="note-markdown" aria-label="Note content"></article>
+  </main>
+  <noscript>Enable JavaScript to read notes.</noscript>
+<p id="pagesNotice" style="position:fixed;top:2px;left:0;right:0;text-align:center;font:10px sans-serif;opacity:.72;z-index:100;pointer-events:none">预设剧本回放演示，不连接任何模型或服务器</p></body>
+</html>

@@ -1,0 +1,61 @@
+/* Study layout only. Fonts/tokens/card materials remain the existing HOME ones.
+   Header/title and viewseg underline declarations come from the WORDS page,
+   not the study mock. Sheets use the existing keep-sheet opaque theme surface. */
+.study-header{gap:4px;padding:calc(env(safe-area-inset-top) + 8px) 18px 20px;}
+.study-header h1{flex:1;min-width:0;font-family:var(--font-cn);font-size:12.5px;font-weight:400;letter-spacing:.01em;text-transform:uppercase;color:var(--text);}
+.study-header .icon-button{margin:0;padding:0;border-radius:50%;}
+.study-back svg{width:18px;height:18px;stroke-width:1.8;}
+main{padding-bottom:calc(96px + env(safe-area-inset-bottom));}
+#dueSummary{font-family:var(--font-en);font-size:25px;line-height:1.35;margin:6px 0 4px;}
+.review-summary .primary{white-space:nowrap;}
+.filter-bar{display:flex;align-items:center;gap:12px;margin:20px 0 16px;}
+.filter-bar .icon-button{margin-left:auto;padding:0;border-radius:50%;}
+.filter-bar .search{flex:1;min-width:0;}
+.viewseg{flex:none;display:flex;gap:22px;margin:0;padding:0;overflow-x:auto;scrollbar-width:none;border:0;min-width:0;}
+.viewseg::-webkit-scrollbar{display:none;}
+.viewseg button{flex:none;border:0;background:transparent;cursor:pointer;padding:5px 1px 8px;position:relative;font-family:var(--font-cn);font-size:15px;color:var(--text);transition:color .24s var(--ease-soft);}
+.viewseg button::after{content:"";position:absolute;left:50%;right:50%;bottom:2px;height:1.5px;background:var(--accent);border-radius:2px;opacity:0;transition:left .32s var(--ease-soft),right .32s var(--ease-soft),opacity .26s;}
+.viewseg button[aria-pressed="true"]{color:var(--text);}
+.viewseg button[aria-pressed="true"]::after{left:0;right:0;opacity:.85;}
+.viewseg span{color:var(--text);}
+.first-hint{display:flex;align-items:center;gap:10px;margin:0 0 16px;font-size:12px;color:var(--text);}
+.first-hint p{flex:1;}
+.first-hint .button{flex:none;white-space:nowrap;}
+.card-list{margin-top:0;}
+.card-list[data-type="word"]{grid-template-columns:repeat(2,minmax(0,1fr));}
+.card-list[data-type="sentence"]{grid-template-columns:minmax(0,1fr);}
+.card-list .card-front{text-align:left;}
+.study-card .card-content{height:100%;}
+.card-list .phonetic{font-size:12px;line-height:1.55;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text);}
+.card-details{margin-top:8px;}
+.card-details>.hint{margin-top:10px;}
+.card-list .empty{grid-column:1/-1;}
+.add-fab{position:fixed;z-index:3;right:max(18px,calc((100vw - 640px)/2 + 18px));bottom:calc(24px + env(safe-area-inset-bottom));width:56px;height:56px;padding:0;border-radius:50%;}
+.add-fab svg{width:24px;height:24px;}
+:root #studyRoom .sheet[data-study-sheet]{
+  background:var(--bg);border:1px solid var(--card-line);border-bottom:0;
+  border-radius:22px 22px 0 0;padding:10px 22px calc(22px + env(safe-area-inset-bottom));
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:var(--card-shadow);
+}
+.sheet::backdrop{background:color-mix(in srgb,var(--text) 28%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.sheet .handle{width:40px;height:4px;border-radius:4px;margin:0 auto 12px;}
+.sheet .hint,.sheet .local-note,.sheet .phonetic{color:var(--text);}
+.backup-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+.backup-actions .button{flex:1;white-space:nowrap;}
+.sheet .local-note{text-align:left;padding:12px 0 0;}
+.detail-heading{display:flex;align-items:flex-start;gap:12px;margin:8px 0 18px;}
+.detail-heading>div{flex:1;min-width:0;}
+#detailFront{font-family:var(--font-en);font-size:30px;line-height:1.4;font-weight:400;overflow-wrap:anywhere;white-space:pre-wrap;}
+#detailPhonetic:empty{display:none;}
+.detail-label{font-family:var(--font-en);font-size:14px;font-weight:400;letter-spacing:.16em;color:var(--text);margin:22px 0 10px;}
+.detail-copy{white-space:pre-wrap;overflow-wrap:anywhere;}
+.related-sentence{margin-bottom:12px;}
+.related-sentence .card-front{font-size:17px;line-height:1.5;}
+.detail-actions .button{flex:1;}
+#studyRoom :is(.hint,.card-label,.source,.phonetic,.local-note,.empty){color:var(--text);}
+/* Select between existing theme ink and paper tokens; never invent a palette.
+   Sheets use their opaque theme surface and retain normal theme ink. */
+:root[data-study-wall-ink="bg"] #studyRoom :is(.study-header h1,.study-header .icon-button,#addCard,#toggleSearch,.viewseg button,.viewseg span,#notice,#appearanceNotice,.empty){color:var(--bg);}
+:root[data-study-card-ink="bg"] #studyRoom main :is(.card-front,.card-front mark,.card-details,.phonetic,.hint,.card-label,#dueSummary,.source,.first-hint,.first-hint .button){color:var(--bg);}
+@media(max-width:360px){.study-header{padding-left:12px;padding-right:12px;}.viewseg{gap:12px;}.viewseg button{font-size:13px;}.tabs span{margin-left:3px;}.filter-bar{gap:8px;}.card-list{gap:10px;}.card-list .card{padding:12px;}.card-list .card-front{font-size:21px;}.add-fab{right:12px;}}
+@media(prefers-reduced-motion:reduce){.viewseg button,.viewseg button::after{transition:none;}}

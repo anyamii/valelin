@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self'; worker-src 'none'; object-src 'none'">
+<script src="pages-replay.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>STUDY · Valelin</title>
+  <link rel="icon" href="icon.svg">
+  <link rel="stylesheet" href="study-card-base.css">
+  <link rel="stylesheet" href="study.css">
+  <link rel="stylesheet" href="study-card-border.css">
+  <link rel="stylesheet" href="study-card-material.css">
+  <link rel="stylesheet" href="study-layout.css?v=motion1015">
+  <link rel="stylesheet" href="study-notes.css?v=20261022">
+  <script src="study-core.js"></script>
+  <script src="study-appearance.js" defer></script>
+  <script src="study-ui.js?v=sheet1015" defer></script>
+  <script src="study-notes.js?v=20261023" defer></script>
+<link rel="stylesheet" href="study-motion.css?v=20261015-plus">
+<script src="study-motion.js?v=20261015-sheet"></script>
+<script src="demo-setup.js?v=valelin-1"></script>
+</head>
+<body id="studyRoom" class="study">
+  <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+    <defs>
+      <filter id="waterGlassCardRefraction" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.035 0.006" numOctaves="2" seed="8" result="waterNoise"/>
+        <feDisplacementMap id="waterGlassCardDisplacement" in="SourceGraphic" in2="waterNoise" scale="15" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </defs>
+  </svg>
+  <div class="study-wall" aria-hidden="true"><img id="studyWallImage" alt=""><div class="study-wall-dim"></div></div>
+  <header class="study-header">
+    <a class="card icon-button study-back" href="index.html" aria-label="Back to HOME"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></a>
+    <h1 id="studyTitle"></h1>
+    <button id="openSettings" class="card icon-button" type="button" aria-label="Settings"><svg aria-hidden="true" width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor"><path d="M3 5H21" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 12H21" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 19H21" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+  </header>
+  <main>
+    <section class="card review-summary" aria-label="Today review">
+      <div><p class="card-label">TODAY · REVIEW</p><p id="dueSummary">No cards yet</p><p id="newSummary" class="hint"></p></div>
+      <button id="startReview" class="button primary" type="button">Start<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+    </section>
+    <div id="filterBar" class="filter-bar">
+      <nav id="typeTabs" class="tabs viewseg" role="tablist" aria-label="Study sections"><button id="wordTab" role="tab" aria-selected="true" aria-pressed="true" aria-controls="cardList" data-type="word" type="button">WORDS <span id="wordCount">0</span></button><button id="sentenceTab" role="tab" aria-selected="false" aria-pressed="false" aria-controls="cardList" data-type="sentence" type="button">SENTENCES <span id="sentenceCount">0</span></button><button id="notesTab" role="tab" aria-selected="false" aria-pressed="false" aria-controls="notesPanel" type="button">NOTES</button></nav>
+      <label id="searchArea" class="search" hidden><input id="search" type="search" placeholder="Search words, sentences, sources" aria-label="Search cards" autocomplete="off"></label>
+      <button id="toggleSearch" class="card icon-button" type="button" aria-label="Open search" aria-expanded="false" aria-controls="searchArea"><svg aria-hidden="true" width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor"><path d="M17 17L21 21" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 11C3 15.4183 6.58172 19 11 19C13.213 19 15.2161 18.1015 16.6644 16.6493C18.1077 15.2022 19 13.2053 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+    </div>
+    <aside id="firstHint" class="card first-hint"><p>Tap word to hear · card to flip · hold to edit</p><button id="dismissHint" class="button" type="button">Got it</button></aside>
+    <p id="notice" class="notice" role="status" aria-live="polite"></p>
+    <p id="appearanceNotice" class="hint" role="status"></p>
+    <div id="cardList" class="card-list" role="tabpanel" aria-labelledby="wordTab"></div>
+    <section id="notesPanel" role="tabpanel" aria-labelledby="notesTab" hidden>
+      <div class="notes-tools"><p id="notesStatus" class="hint" role="status" aria-live="polite"></p></div>
+      <div id="notesList" class="card-list"></div>
+    </section>
+  </main>
+  <button id="addCard" class="card icon-button add-fab" type="button" aria-label="Add card"><svg aria-hidden="true" width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor"><path d="M6 12H12M18 12H12M12 12V6M12 12V18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+
+  <dialog id="editorDialog" class="sheet" data-study-sheet="frosted" aria-labelledby="editorTitle">
+    <div class="handle" aria-hidden="true"></div><div class="sheet-heading"><h2 id="editorTitle">ADD CARD</h2></div>
+    <form id="editorForm">
+      <label>Type<select name="type" id="cardType"><option value="word">Word / phrase</option><option value="sentence">Sentence</option></select></label>
+      <label><span id="frontLabel">Word / phrase</span><textarea name="front" id="cardFront" rows="2" required placeholder="Write the English you want to remember"></textarea></label>
+      <label id="phoneticField">Phonetic (optional)<input name="phonetic" placeholder="/…/"></label>
+      <label id="focusField" hidden>Focus word (optional)<input name="focus" placeholder="Highlight this word in the sentence"></label>
+      <label><span id="meaningLabel">Meaning (optional)</span><textarea name="meaning" rows="2" placeholder="You can add this later"></textarea></label>
+      <label>Source (optional)<input name="source" placeholder="Book / IELTS / Vale voice"></label>
+      <label>Note (optional)<textarea name="note" rows="2" placeholder="Something to help you remember"></textarea></label>
+      <p id="editorError" class="notice" role="alert"></p><div class="sheet-actions"><button class="button" data-close type="button">Cancel</button><button class="button primary" type="submit">Save card</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="importDialog" class="sheet" data-study-sheet="frosted" aria-labelledby="importTitle">
+    <div class="handle" aria-hidden="true"></div><div class="sheet-heading"><h2 id="importTitle">IMPORT</h2></div>
+    <label>Format<select id="importFormat"><option value="txt">TXT words / sentences</option><option value="json">JSON card backup</option></select></label>
+    <label id="importTypeField">TXT card type<select id="importType"><option value="word">Word / phrase</option><option value="sentence">Sentence</option></select></label>
+    <p id="importHint" class="hint">One card per line: Tab, spaced |, or ｜. Words also accept the first comma; sentences keep commas. Use UTF-8 TXT.</p>
+    <input id="importFile" type="file" accept=".txt,text/plain" hidden><button id="chooseFile" class="button" type="button">Choose file</button><span id="fileName" class="hint"></span>
+    <p id="importError" class="notice" role="alert"></p>
+    <section id="importPreview" hidden><p id="importStats" class="preview-stats"></p><p class="hint">Preview of the first 20 cards. Nothing is saved until you confirm.</p><ol id="previewRows" class="preview-rows"></ol><div class="sheet-actions"><button class="button" data-close type="button">Cancel</button><button id="confirmImport" class="button primary" type="button">Import cards</button></div></section>
+  </dialog>
+
+  <dialog id="reviewDialog" class="sheet review-sheet" data-study-sheet="frosted" aria-labelledby="reviewTitle">
+    <div class="handle" aria-hidden="true"></div><div class="sheet-heading"><h2 id="reviewTitle">REVIEW</h2></div>
+    <p id="reviewProgress" class="hint"></p>
+    <div id="reviewContent"><p id="reviewKind" class="card-label"></p><div id="flipCard" class="flip-card" role="button" tabindex="0" aria-label="Show meaning"><span id="reviewFront" class="speakable" lang="en" role="button" tabindex="0" aria-label="Read English aloud"></span><span id="reviewPhonetic" class="phonetic"></span><span id="flipHint" class="hint">Tap word to hear · card to flip</span><span id="reviewBack" hidden></span></div><p id="reviewSource" class="hint"></p><div id="gradeButtons" class="grade-buttons" hidden><button id="forgotCard" class="button" type="button">Forgot</button><button id="rememberedCard" class="button primary" type="button">Remembered</button></div></div>
+    <p id="reviewError" class="notice" role="alert"></p><p id="reviewDone" class="empty" hidden>All done for today. See you next time.</p>
+  </dialog>
+
+  <dialog id="settingsDialog" class="sheet" data-study-sheet="frosted" aria-labelledby="settingsTitle">
+    <div class="handle" aria-hidden="true"></div><div class="sheet-heading"><h2 id="settingsTitle">SETTINGS</h2></div>
+    <form id="settingsForm"><label>New cards per day<input id="newLimit" type="number" min="0" max="200" step="1" required></label><p class="hint">Default 20, range 0–200. Due cards still appear.</p><label class="setting-switch"><span>Show meanings in list</span><input id="showMeanings" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></label><p class="hint">Remembered: move up a box. Boxes 1–6 use 1 / 2 / 4 / 7 / 15 / 30 days. Forgot: box 1, due tomorrow.</p><label>Accent<select id="accent"><option value="US">US</option><option value="UK">UK</option></select></label><div class="backup-actions"><button id="openImport" class="button" type="button">Import TXT / JSON</button><button id="exportJson" class="button" type="button">Export JSON</button></div><p class="local-note">Cards live in this browser. Export before switching devices.</p><p id="backupNotice" class="notice" role="status"></p><p id="settingsError" class="notice" role="alert"></p><div class="sheet-actions"><button class="button" data-close type="button">Cancel</button><button class="button primary" type="submit">Save settings</button></div></form>
+  </dialog>
+
+  <dialog id="detailDialog" class="sheet detail-sheet" data-study-sheet="frosted" aria-labelledby="detailFront">
+    <div class="handle" aria-hidden="true"></div><div class="detail-heading"><div><h2 id="detailFront" class="speakable" lang="en" role="button" tabindex="0" aria-label="Read English aloud"></h2><p id="detailPhonetic" class="phonetic"></p></div></div>
+    <p id="detailError" class="notice" role="alert"></p>
+    <section><h3 class="detail-label">MEANING</h3><p id="detailMeaning" class="detail-copy"></p></section>
+    <section id="detailSentences" hidden><h3 class="detail-label">IN YOUR SENTENCES</h3><div id="relatedSentences"></div></section>
+    <section><h3 class="detail-label">NOTE</h3><p id="detailNote" class="detail-copy"></p></section>
+    <section><h3 class="detail-label">REVIEW</h3><p id="detailReview" class="hint"></p></section>
+    <div class="sheet-actions detail-actions"><button id="editDetail" class="button" type="button">Edit</button><button id="deleteDetail" class="button" type="button">Delete</button></div>
+  </dialog>
+
+  <dialog id="deleteDialog" class="sheet" data-study-sheet="frosted" aria-labelledby="deleteTitle"><div class="handle" aria-hidden="true"></div><div class="sheet-heading"><h2 id="deleteTitle">DELETE CARD?</h2></div><p id="deleteFront" lang="en"></p><p class="hint">Deletion cannot be undone. Export JSON first if you need a backup.</p><p id="deleteError" class="notice" role="alert"></p><div class="sheet-actions"><button class="button" data-close type="button">Keep</button><button id="confirmDelete" class="button" type="button">Delete card</button></div></dialog>
+  <script>
+    (function () {
+      try {
+        const home = new URL(document.referrer);
+        if (home.origin === location.origin && ['/', 'index.html', '/index-next.html'].includes(home.pathname)) {
+          const back = document.querySelector('.study-back');
+          back.href = home.href;
+          back.addEventListener('click', function (event) {
+            if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            if (history.length > 1) {
+              event.preventDefault();
+              history.back();
+            }
+          });
+        }
+      } catch (_) { /* Direct entry keeps the formal HOME default. */ }
+    })();
+  </script>
+  <noscript>Enable JavaScript to save and review cards.</noscript>
+<p id="pagesNotice" style="position:fixed;top:2px;left:0;right:0;text-align:center;font:10px sans-serif;opacity:.72;z-index:100;pointer-events:none">预设剧本回放演示，不连接任何模型或服务器</p></body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html><html><head><script>'use strict';
+(() => {
+ const USER='Lin', AI='Vale';
+ const audit=[]; window.DEMO={USER,AI,audit,frames:[],pending:null};
+ function replace(obj,key,value){Object.defineProperty(obj,key,{value,writable:false,configurable:false});}
+ function memory(){const m=new Map();return new Proxy({getItem:k=>m.has(String(k))?m.get(String(k)):null,setItem:(k,v)=>m.set(String(k),String(v)),removeItem:k=>m.delete(String(k)),clear:()=>m.clear(),key:i=>Array.from(m.keys())[i]??null,get length(){return m.size;}},{get:(t,k)=>k in t?t[k]:m.get(String(k)),set:(t,k,v)=>(m.set(String(k),String(v)),true)});}
+ replace(window,'localStorage',memory()); replace(window,'sessionStorage',memory());
+ // No native database handle or cache is retained.
+ const databases=new Map();
+ function request(value){const req={result:value,error:null};setTimeout(()=>req.onsuccess?.({target:req}),0);return req;}
+ replace(window,'indexedDB',{databases:async()=>Array.from(databases.keys()).map(name=>({name,version:1})),deleteDatabase:name=>{databases.delete(name);return request(undefined);},open(name){let fresh=!databases.has(name);if(fresh)databases.set(name,new Map());const data=databases.get(name);const db={objectStoreNames:{contains:k=>data.has(k)},createObjectStore(k){data.set(k,new Map());},close(){},transaction(k){const m=data.get(k)||new Map();data.set(k,m);const tx={objectStore(){return {getAll:()=>request(Array.from(m.values()).map(v=>structuredClone(v))),get:k=>request(m.get(k)),put:v=>{m.set(v.id,structuredClone(v));return request(v.id);},delete:k=>{m.delete(k);return request(undefined);},clear:()=>{m.clear();return request(undefined);}};}};setTimeout(()=>tx.oncomplete?.(),20);return tx;}};const req={result:db,error:null};setTimeout(()=>{if(fresh)req.onupgradeneeded?.({target:req});req.onsuccess?.({target:req});},0);return req;}});
+ const stores=new Map();
+ replace(window,'caches',{keys:async()=>Array.from(stores.keys()),delete:async k=>stores.delete(k),has:async k=>stores.has(k),match:async()=>undefined,open:async k=>{if(!stores.has(k)){const m=new Map();stores.set(k,{put:async(k,v)=>m.set(String(k),v.clone()),match:async k=>m.get(String(k))?.clone(),delete:async k=>m.delete(String(k)),keys:async()=>[]});}return stores.get(k);}});
+ replace(document,'cookie','');
+ const pushManager={subscribe:async()=>({endpoint:'',toJSON:()=>({}),unsubscribe:async()=>true}),getSubscription:async()=>null,permissionState:async()=>'denied'};
+ const registration={pushManager,showNotification:async()=>{},unregister:async()=>false};
+ replace(navigator,'serviceWorker',{register:async()=>registration,ready:Promise.resolve(registration),getRegistration:async()=>undefined,getRegistrations:async()=>[],addEventListener(){},removeEventListener(){},controller:null});
+ if(window.PushManager) replace(PushManager.prototype,'subscribe',pushManager.subscribe);
+ replace(navigator,'sendBeacon',()=>false);
+ class Blocked extends EventTarget{constructor(url){super();audit.push({transport:this.constructor.name,url:String(url)});this.readyState=0;}send(){}close(){this.readyState=3;}open(){}setRequestHeader(){}getAllResponseHeaders(){return '';}getResponseHeader(){return null;}abort(){}}
+ class XHR extends EventTarget{open(method,url){this.method=method;this.url=url;this.readyState=1;}setRequestHeader(){}getAllResponseHeaders(){return 'content-type: application/json';}getResponseHeader(){return 'application/json';}abort(){}async send(body){const r=await fetch(this.url,{method:this.method,body});this.status=200;this.readyState=4;this.responseText=await r.text();this.response=this.responseType==='json'?JSON.parse(this.responseText):this.responseText;this.onreadystatechange?.();this.onload?.();this.dispatchEvent(new Event('load'));}}
+ replace(window,'XMLHttpRequest',XHR); replace(window,'WebSocket',Blocked);
+ class SSE extends Blocked{constructor(url){super(url);queueMicrotask(()=>{this.readyState=1;this.onopen?.({});});}}
+ replace(window,'EventSource',SSE);
+ for(const k of ['Worker','SharedWorker','RTCPeerConnection','webkitRTCPeerConnection']) if(k in window)replace(window,k,Blocked);
+ if(navigator.storage) replace(navigator,'storage',{estimate:async()=>({usage:0,quota:0}),persist:async()=>false,persisted:async()=>false,getDirectory:async()=>{throw Error('Demo memory only');}});
+ localStorage.setItem('companion_secret','demo');localStorage.setItem('lin_split_on','off');localStorage.setItem('waifu_char_delay','40');localStorage.setItem('segment_enabled','on');
+ const date=new Date().toISOString(), today=date.slice(0,10);
+ localStorage.setItem('valelin_notes',JSON.stringify({[today]:[{id:'demo-note',t:'整理演示清单',author:'user'}]}));
+ localStorage.setItem('valelin_anniv',JSON.stringify([{date:'2027-01-01',title:'元旦',name:'元旦',repeat:'yearly',yearly:true},{date:'2027-02-06',title:'春节',name:'春节',yearly:false},{date:'2027-02-14',title:'情人节',name:'情人节',yearly:true},{date:'2026-09-25',title:'中秋节',name:'中秋节',yearly:false}]));
+ localStorage.setItem('valelin_study_cards_v1',JSON.stringify(['snapshot','iterate','clarity'].map((front,i)=>({id:'demo-card-'+i,type:'word',front,phonetic:'/demo/',meaning:['快照','迭代','清晰'][i],focus:'',note:'演示学习卡',source:'demo',audio_url:'',added_by:'lin',created_at:date,updated_at:date,review:{box:0,lapses:0,due_at:date,last_reviewed_at:null}}))));
+ const buckets=['工作节奏','阅读清单','项目记录'].map((name,i)=>({id:'demo-'+i,name,text:'### '+name+'\n这是一条中性的演示记忆，可以搜索、编辑和添加年轮。',tags:['demo'],domain:'演示',created:date,last_active:date,importance:0.7,pinned:i===0,comments:[{created:date,body:'演示年轮'}],comment_count:1}));
+ const config={assistant_name:AI,user_name:USER,assistant_avatar:'',user_avatar:'',mood_enabled:true};
+ let stations=[{id:'demo',name:'Demo station',model:'demo-model',models:['demo-model'],active:true,base_url:'',protocol:'openai'}], mcps=[{id:'demo',name:'Demo tools',url:'',enabled:true,tools:[{name:'read_demo',enabled:true}]}];
+ const keeps=[{id:1,saved_by:'her',speaker:'vale',assistant_text:'把复杂的事情拆成几步，先完成第一步。',user_text:'如何开始这个项目？',created_at:date,text:'把复杂的事情拆成几步，先完成第一步。',tags:['演示'],notes:[],media:{items:[]},images:[]},{id:2,saved_by:'vale',speaker:'her',user_text:'今天完成了一个小目标。',assistant_text:'记录进度，明天继续。',created_at:date,text:'今天完成了一个小目标。',tags:['项目'],notes:[],media:{items:[{kind:'image',url:'/sample.svg'}]},images:[{url:'/sample.svg',name:'示例图'}]}];
+ keeps.forEach(k=>{k.saved_at=date;k.message_at=date;});
+ window.DEMO.data={buckets,keeps,completed:[],command:null};
+ let sessions=[{id:'demo',title:'演示会话'}];let seq=100;
+ const demoNotes=[{id:'guide-md',title:'演示指南.md',markdown:'# 演示指南\n\n先选择一个场景，再观察完整过程。\n\n- 输入\n- 工具调用\n- 结果验证',modified_at:date,word_count:48},{id:'check-txt',title:'检查清单.txt',markdown:'检查清单\n\n1. 选择场景\n2. 查看过程\n3. 核对结果',modified_at:date,word_count:32}];
+ async function route(url,init){const p=new URL(url,location.href).pathname;let body={};try{body=JSON.parse(init.body||'{}');}catch{}const method=(init.method||'GET').toUpperCase();
+ if(p.endsWith('/app/notes'))return {notes:demoNotes};
+ if(p.includes('/app/notes/'))return demoNotes.find(n=>n.id===p.split('/').pop())||demoNotes[0];
+ if(p.endsWith('/sdk/permission')){const resume=window.DEMO.pending;window.DEMO.pending=null;resume?.(!!body.allow);return {ok:true};}
+ if(p.includes('/command-card/')&&p.endsWith('/result')){const c=DEMO.data.command;if(c){c.status=body.outcome;DEMO.data.completed.push({...c});DEMO.data.command=null;}return {command:c};}
+ if(p.endsWith('/command-card'))return {active:DEMO.data.command,latest:DEMO.data.command||DEMO.data.completed.at(-1)};
+ if(p.endsWith('/previews/'))return {groups:[{title:'演示网页',items:[{file:'theme.html',title:'早间新主题样稿（完整副本）'},{file:'focus.html',title:'专注小页'},{file:'reading.html',title:'阅读小页'}]}]};
+ if(p.endsWith('/config')){if(method!=='GET')Object.assign(config,body);return {...config};}
+ if(p.includes('/ob/buckets'))return buckets;
+ if(p.includes('/ob/search'))return buckets.filter(b=>JSON.stringify(b).includes(new URL(url,location.href).searchParams.get('q')||''));
+ if(p.includes('/ob/bucket/')){let b=buckets.find(x=>p.includes(x.id))||buckets[0];if(method!=='GET'){if(p.endsWith('/comments')){const c={body:body.body||body.content||body.text,created:date};b.comments.push(c);return {ok:true,comment:c};}Object.assign(b,body);}return b;}
+ if(p.endsWith('/disabled/today-song.json'))return {date:today,title:'Demo Interlude',artist:'Demo',note:'本地生成的演示音频'};
+ if(p.endsWith('/home/today'))return {items:[{type:'file',time:'09:30',summary:'准备演示文档'},{type:'calendar',time:'10:00',summary:'检查项目计划'},{type:'keep',time:'10:15',summary:'留存一条项目笔记'}]};
+ if(p.endsWith('/lumen')||p.endsWith('/lumen/state'))return {scores:[{key:'focus',score:0.65,target:0.4,label:'专注于当前任务'},{key:'fatigue',score:0.1,target:0.1,label:'状态平稳'}],updated_at:date,gates:{},longing:0};
+ if(p.endsWith('/persona'))return {mood_label:'warm_neutral',inner_thought:'按计划推进今天的项目。',updated_at:date,events:[{id:1,mood_label:'warm_neutral',inner_thought:'记录一次演示状态更新。',created_at:date}]};
+ if(p.includes('/murmur/'))return {items:[{id:1,created_at:date,ts:date,note:'等待下一步演示操作',gate:'cooldown',win:'focus',text:'演示记录'}],events:[]};
+ if(p.endsWith('/stations')){if(method==='POST')stations.push({...body,id:'station-'+seq++});return {ok:true,stations};}
+ if(p.includes('/stations/')){const id=p.split('/').pop();if(method==='DELETE')stations=stations.filter(x=>x.id!==id);else Object.assign(stations.find(x=>x.id===id)||{},body);return {ok:true,models:['demo-model'],latency_ms:12};}
+ if(p.endsWith('/mcp')){if(method==='POST')mcps.push({...body,id:'mcp-'+seq++});return {ok:true,servers:mcps,tools:Object.fromEntries(mcps.map(m=>[m.id,m.tools||[]]))};}
+ if(p.includes('/mcp/')){const id=p.split('/')[3];if(method==='DELETE')mcps=mcps.filter(x=>x.id!==id);else if(method!=='GET')Object.assign(mcps.find(x=>x.id===id)||{},body);return {ok:true,tools:mcps[0]?.tools||[]};}
+ if(p.endsWith('/keeps/tags'))return {tags:['演示','项目']};
+ if(p.endsWith('/keeps')){if(method==='POST'){const item={...body,id:seq++,created_at:date,notes:[],images:[]};keeps.push(item);return {ok:true,item};}return {items:keeps};}
+ if(p.includes('/keeps/')){const id=Number(p.split('/')[3]);const item=keeps.find(x=>x.id===id)||keeps[0];if(p.includes('/notes')){item.notes=item.notes||[];if(method==='DELETE')item.notes=item.notes.filter(n=>String(n.id)!==p.split('/').pop());else if(method!=='GET')item.notes.push({id:seq++,content:body.content,created_at:date,author:'her'});item.note_count=item.notes.length;}else if(method==='DELETE')keeps.splice(keeps.indexOf(item),1);else if(method!=='GET')Object.assign(item,body);return {ok:true,item,...item};}
+ if(p.includes('/stickers'))return {ok:true,stickers:[],items:[]};
+ if(p.endsWith('/session-stats'))return {messages:36,total:36,human:18,ai:18,days:7,visible_window:100,start_ts:date,rounds:18,last_prompt_tokens:1200};
+ if(p.includes('weather')||url.includes('wttr.in'))return {current_condition:[{temp_C:'22',weatherCode:'113',weatherDesc:[{value:'Sunny'}]}]};
+ if(p.includes('/letters'))return {letters:[],items:[]};
+ if(p.endsWith('/sessions')){const created=method==='POST'?{id:'session-'+seq++,title:body.title||'演示会话'}:null;if(created)sessions.push(created);return {sessions,active_session:created?.id||sessions[0].id,created};}
+ if(p.includes('/sessions/')){const item=sessions.find(x=>x.id===p.split('/').pop());if(item)Object.assign(item,body);return {ok:true,sessions,active_session:item?.id||'demo'};}
+ return {ok:true,items:[],events:[],tools:[],windows:{},model:'demo-model',count:0};}
+ replace(window,'fetch',async(input,init={})=>{await new Promise(r=>setTimeout(r,40));const url=String(input?.url||input);audit.push({transport:'fetch',url,method:init.method||'GET'});return new Response(JSON.stringify(await route(url,init)),{status:200,headers:{'Content-Type':'application/json'}});});
+ window.addEventListener('DOMContentLoaded',()=>{
+ document.addEventListener('click',e=>{const a=e.target.closest('a');if(!a)return;const u=new URL(a.href,location.href);if(u.origin!==location.origin||!u.pathname.startsWith('/')){e.preventDefault();e.stopImmediatePropagation();}},true);
+ replace(window,'open',()=>null);
+ });
+})();
+</script><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; worker-src 'none'"><link rel="stylesheet" href="foundation/tokens.css"><link rel="stylesheet" href="foundation/components.css"></head><body class="page"><h1 class="t-h1">FOCUS</h1><p class="t-body">只完成眼前的一个小目标。</p></body></html>

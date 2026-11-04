@@ -1,0 +1,12 @@
+/* Original unified HOME card border/shadow rule, shared unchanged with study. */
+  :is(
+    .card, .settings-card, .jot, .music-card, .pulse,
+    .list, .dt-head, .dt-text, .rings-wrap, #mindPage .sec,
+    #viewNow .now, #viewNow .stream, #favList .stream, .heat-in,
+    #viewDrive .md-card, #viewBlocked .md-card, #viewTrace .md-card,
+    .cal-card, .pd-card, .td-card, .an-card
+  ),
+  #studyRoom :is(.card,.sheet,.flip-card){
+    border-color:var(--card-border);
+    box-shadow:var(--card-shadow);
+  }
