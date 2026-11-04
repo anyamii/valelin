@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<script src="/desktop-frame.js"></script>
 <title>Valelin</title>
 
 <!-- PWA / iOS -->
@@ -16383,7 +16384,7 @@ function mountPhotoStacks(scope = scrollEl){
   }
 }
 function destroyPhotoStacksIn(el){
-  if (!el) return;
+  if (!el || typeof el.querySelectorAll !== "function") return;
   const slots = (el.matches && el.matches(".att-photostack")) ? [el] : el.querySelectorAll(".att-photostack");
   for (const s of slots){
     const ps = psInstances.get(s);

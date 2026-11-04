@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valelin</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+:root{color-scheme:light;--outer:#eae5df;--ink:#776d67;--rim:#fffaf5}
+:root[data-theme="night"]{color-scheme:dark;--outer:#1b2028;--ink:#b9b0b5;--rim:#36343c}
+:root[data-theme="warm"]{--outer:#e9ded4;--ink:#806958;--rim:#fff3e5}
+*{box-sizing:border-box}body{margin:0;background:var(--outer);color:var(--ink);font:12px system-ui,sans-serif;transition:background .2s}
+main{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px}
+#phone{width:390px;height:min(844px,calc(100dvh - 64px));max-width:calc(100vw - 32px);border:6px solid var(--rim);box-sizing:content-box;border-radius:32px;overflow:hidden;box-shadow:0 14px 48px #0002;background:var(--rim)}
+iframe{display:block;width:100%;height:100%;border:0;border-radius:25px}p{margin:0;letter-spacing:.08em}
+</style>
+</head>
+<body><main><div id="phone"><iframe title="Valelin 手机界面" allow="microphone; clipboard-write"></iframe></div><p>为手机设计 · 用手机打开体验更好</p></main>
+<script>
+(() => {
+  const fallback = new URL('index.html', location.href);
+  let target;
+  try { target = new URL(new URLSearchParams(location.search).get('page') || fallback.href); } catch { target = fallback; }
+  if (target.origin !== location.origin || target.pathname.endsWith('desktop-frame.html')) target = fallback;
+  const wide = matchMedia('(min-width: 601px)');
+  const phoneLandscape = matchMedia('(pointer: coarse) and (max-height: 600px)');
+  const frame = document.querySelector('iframe');
+  const resize = () => {
+    if (!wide.matches || phoneLandscape.matches) {
+      let destination = target.href;
+      try { destination = frame.contentWindow.location.href === 'about:blank' ? destination : frame.contentWindow.location.href; } catch {}
+      location.replace(destination);
+    }
+  };
+  wide.addEventListener('change', resize);
+  phoneLandscape.addEventListener('change', resize);
+  frame.addEventListener('load', () => {
+    const doc = frame.contentDocument;
+    if (!doc) return;
+    const sync = () => { document.documentElement.dataset.theme = doc.documentElement.dataset.theme || ''; };
+    sync();
+    new MutationObserver(sync).observe(doc.documentElement, {attributes:true,attributeFilter:['data-theme']});
+  });
+  resize();
+  frame.src = target.href;
+})();
+</script>
+</body></html>
